@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+######################
+### initialization ###
+######################
+
+BROWSER="firefox"
+SEARCHENGINE="https://duckduckgo.com/html/?q="
+BOOKMARKS_FILE=/tmp/shortcuts.txt
+
+########################
+### helper functions ###
+########################
+
+# opens wofi with saved shortcuts as options
+# return selected link
+display() {
+  context=$1
+
+  if [[ -f $BOOKMARKS_FILE ]]; then
+    BOOKMARKS=$(< "$BOOKMARKS_FILE")
+
+    if [[ "$context" == "Remove" ]]; then
+      link=$(echo -e "$BOOKMARKS" | wofi -d -p " $context: ")
+    else 
+      link=$(echo -e "$BOOKMARKS\nOptions" | wofi -d -p " $context: ")
+    fi
+
+  else
+    link=$(wofi -d -p " Open: ")
+  fi
+
+  echo "$link"
+}
+
+# checks if link exists in shortcuts file
+is_exist() {
+  grep -xFq "$1" $BOOKMARKS_FILE && echo 1 || echo 0
+}
+
+######################
+### main functions ###
+######################
+
+# open browser with preferred search engine
+search() {
+  input=$(wofi -d -p " Search: ")
+
+  if [[ -z "$input" ]]; then
+    exit 0
+  fi
+
+ $BROWSER "$SEARCHENGINE$input" &
+}
+
+# open browser with selected link
+open() {
+  link=$(display "Open")
+
+  if [[ -z "$link" ]]; then
+    exit 0
+  fi
+
+  if [[ "$link" == "Options" ]]; then
+    options
+    exit 0
+  fi
+
+ $BROWSER "$link" &
+}
+
+# list available options
+options() {
+  choice=$(echo -e "Add\nRemove\nExit" | wofi -d -p " Options: ")
+
+  case "$choice" in
+    Add) add;;
+    Remove) remove;;
+    Exit) exit 0;;
+  esac
+}
+
+# append links to shortcuts file
+# send apporpriate notification
+add() {
+  new_link=$(wofi -d -p " Add link: ")
+  exist=$(is_exist "$new_link")
+
+  if [[ $(( exist )) -eq 1 ]]; then
+    notify-send "Link already exists" "Sorry but \"$new_link\" already exists in the shortcuts list"
+    exit 0
+  fi
+
+  echo "$new_link" >> $BOOKMARKS_FILE
+  notify-send "Added shortcut" "Added \"$new_link\" to the shortcuts list"
+}
+
+# remove links from shortcuts file
+# send apporpriate notification
+remove() {
+  deprecated_link=$(display "Remove")
+  exist=$(is_exist "$deprecated_link")
+
+  if [[ $(( exist )) -eq 0 ]]; then
+    notify-send "Link does not exist" "Sorry but \"$deprecated_link\" does not exist in the shortcuts list"
+    exit 0
+  fi
+  
+  sed -i "/^$deprecated_link$/d" $BOOKMARKS_FILE
+  
+  notify-send "Removed shortcut" "Removed \"$deprecated_link\" from the shortcuts list"
+}
+
+"$@"

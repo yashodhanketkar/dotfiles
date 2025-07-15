@@ -1,0 +1,144 @@
+* {
+  black:        #000000;
+  black01:     #00000019;
+  black02:     #00000033;
+  black03:     #0000004C;
+  black04:     #00000066;
+  black05:     #00000080;
+  black06:     #00000099;
+  black07:     #000000B3;
+  black08:     #000000CC;
+  black09:     #000000E6;
+
+  dark:         #282A36;
+  dark01:      #282A3619;
+  dark02:      #282A3633;
+  dark03:      #282A364C;
+  dark04:      #282A3666;
+  dark05:      #282A3680;
+  dark06:      #282A3699;
+  dark07:      #282A36B3;
+  dark08:      #282A36CC;
+  dark09:      #282A36E6;
+
+  light:        #F8F8F2;
+  light01:     #F8F8F219;
+  light02:     #F8F8F233;
+  light03:     #F8F8F24C;
+  light04:     #F8F8F266;
+  light05:     #F8F8F280;
+  light06:     #F8F8F299;
+  light07:     #F8F8F2B3;
+  light08:     #F8F8F2CC;
+  light09:     #F8F8F2E6;
+
+  accent:       #44475A;
+  accent01:    #44475A19;
+  accent02:    #44475A33;
+  accent03:    #44475A4C;
+  accent04:    #44475A66;
+  accent05:    #44475A80;
+  accent06:    #44475A99;
+  accent07:    #44475AB3;
+  accent08:    #44475ACC;
+  accent09:    #44475AE6;
+
+  selection:       #44475A;
+  selection01:    #44475A19;
+  selection02:    #44475A33;
+  selection03:    #44475A4C;
+  selection04:    #44475A66;
+  selection05:    #44475A80;
+  selection06:    #44475A99;
+  selection07:    #44475AB3;
+  selection08:    #44475ACC;
+  selection09:    #44475AE6;
+
+  comment:       #6272A4;
+  comment01:    #6272A419;
+  comment02:    #6272A433;
+  comment03:    #6272A44C;
+  comment04:    #6272A466;
+  comment05:    #6272A480;
+  comment06:    #6272A499;
+  comment07:    #6272A4B3;
+  comment08:    #6272A4CC;
+  comment09:    #6272A4E6;
+
+  cyan:       #8BE9FD;
+  cyan01:    #8BE9FD19;
+  cyan02:    #8BE9FD33;
+  cyan03:    #8BE9FD4C;
+  cyan04:    #8BE9FD66;
+  cyan05:    #8BE9FD80;
+  cyan06:    #8BE9FD99;
+  cyan07:    #8BE9FDB3;
+  cyan08:    #8BE9FDCC;
+  cyan09:    #8BE9FDE6;
+
+  green:       #50FA7B;
+  green01:    #50FA7B19;
+  green02:    #50FA7B33;
+  green03:    #50FA7B4C;
+  green04:    #50FA7B66;
+  green05:    #50FA7B80;
+  green06:    #50FA7B99;
+  green07:    #50FA7BB3;
+  green08:    #50FA7BCC;
+  green09:    #50FA7BE6;
+
+  orange:       #FFB86C;
+  orange01:    #FFB86C19;
+  orange02:    #FFB86C33;
+  orange03:    #FFB86C4C;
+  orange04:    #FFB86C66;
+  orange05:    #FFB86C80;
+  orange06:    #FFB86C99;
+  orange07:    #FFB86CB3;
+  orange08:    #FFB86CCC;
+  orange09:    #FFB86CE6;
+
+  pink:       #FF79C6;
+  pink01:    #FF79C619;
+  pink02:    #FF79C633;
+  pink03:    #FF79C64C;
+  pink04:    #FF79C666;
+  pink05:    #FF79C680;
+  pink06:    #FF79C699;
+  pink07:    #FF79C6B3;
+  pink08:    #FF79C6CC;
+  pink09:    #FF79C6E6;
+
+  purple:       #BD93F9;
+  purple01:    #BD93F919;
+  purple02:    #BD93F933;
+  purple03:    #BD93F94C;
+  purple04:    #BD93F966;
+  purple05:    #BD93F980;
+  purple06:    #BD93F999;
+  purple07:    #BD93F9B3;
+  purple08:    #BD93F9CC;
+  purple09:    #BD93F9E6;
+
+  red:       #FF5555;
+  red01:    #FF555519;
+  red02:    #FF555533;
+  red03:    #FF55554C;
+  red04:    #FF555566;
+  red05:    #FF555580;
+  red06:    #FF555599;
+  red07:    #FF5555B3;
+  red08:    #FF5555CC;
+  red09:    #FF5555E6;
+
+  yellow:       #F1FA8C;
+  yellow01:    #F1FA8C19;
+  yellow02:    #F1FA8C33;
+  yellow03:    #F1FA8C4C;
+  yellow04:    #F1FA8C66;
+  yellow05:    #F1FA8C80;
+  yellow06:    #F1FA8C99;
+  yellow07:    #F1FA8CB3;
+  yellow08:    #F1FA8CCC;
+  yellow09:    #F1FA8CE6;
+}

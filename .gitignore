@@ -1,0 +1,15 @@
+*.uuid
+
+# dynamic binaries
+.local/bin/arsg
+
+# wallust handled
+.config/hypr/hyprpaper.conf
+.config/swaync/colors.css
+.config/waybar/colors.css
+.config/waybar/clock.jsonc
+.config/wlogout/colors.css
+.config/wofi/style.css
+
+# private
+.config/wezterm/lua/private/

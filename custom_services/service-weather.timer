@@ -1,0 +1,10 @@
+[Unit]
+Description=Weather Timer
+
+[Timer]
+OnBootSec=5sec
+OnCalendar=*-*-* *:00:00
+Unit=service-weather.service
+
+[Install]
+WantedBy=timers.target

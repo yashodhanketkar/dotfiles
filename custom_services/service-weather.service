@@ -1,0 +1,9 @@
+[Unit]
+Description=Weather Service
+
+[Service]
+ExecStart=/usr/local/bin/weather.sh
+Type=oneshot
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+################################################################################
+###                    Old bash script to launch polybars                    ###
+################################################################################
+
+# While it works fine on startup and usual cases. It launches double bars when i3 is reloaded rapidly.
+
+# # Terminate already running bar instances
+# killall -q polybar
+
+# # Wait until the processes have been shut down
+# while pgrep -u $UID -x polybar >/dev/null; do sleep 0.5; done
+
+# # Launch bar1 and bar2
+# polybar main & polybar alt
+
+################################################################################
+###                    New bash script to launch polybars                    ###
+################################################################################
+
+
+# kills all polybars
+killall -q polybar
+
+# Launches polybars
+for m in $(xrandr --query | grep ' connected' | cut -d' ' -f1); do
+  if [[ $m == "DP-2" ]]; then
+    polybar main &
+  elif [[ $m == "HDMI-0" ]]; then
+    polybar alt &
+  fi
+done
+
+# Waits for polybars to launch
+sleep .5 # for some reason, this fixes issue of double bars

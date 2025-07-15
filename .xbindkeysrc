@@ -1,0 +1,5 @@
+"bash /home/lou/.local/bin/switch-audio-device"
+b:8
+
+"$i3lockwall i3lock -i /home/lou/Pictures/lockalt.png -t"
+b:9

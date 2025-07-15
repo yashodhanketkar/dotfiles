@@ -1,0 +1,2 @@
+$gradActive = rgba({{ cursor | rgb }},75) rgba({{ foreground | rgb }},75) 45deg
+$gradInactive = rgba({{ color1 | rgb }},75) rgba({{ color4 | rgb }},75) 45deg

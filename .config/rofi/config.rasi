@@ -1,0 +1,107 @@
+@theme "/dev/null"
+@theme "./colors.rasi"
+
+configuration {
+  show-icons: true;
+  display-drun: "Apps:";
+  display-window: "W";
+}
+
+* {
+  font: "JetBrainsMono Nerd Font 12";
+  background-color: transparent;
+  text-color: @light;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  location: north;
+  width: 45%;
+  padding: 8px; 
+  background-color: @dark03;
+
+  transparency: "background";
+
+  y-offset: 48px;
+  border: 1px;
+  children: [ inputbar, listview ];
+}
+
+inputbar {
+  spacing: 8px;
+  padding: 8px;
+
+  border: 1px;
+  background-color: @selection05;
+}
+
+prompt,
+entry,
+element-icon,
+element-text {
+  vertical-align: 0.5;
+}
+
+prompt {
+  text-color: @comment;
+}
+
+textbox {
+  padding: 8px;
+  background-color: @selection05;
+}
+
+listview {
+  padding: 4px 0;
+  lines: 8;
+  columns: 1;
+
+  fixed-height: false;
+}
+
+element {
+  padding: 8px;
+  spacing: 8px;
+  orientation: horizontal;
+  children: [ element-icon, element-text ];
+  border-radius: 4px;
+}
+
+element normal normal {
+  text-color: @light;
+}
+
+element normal urgent {
+  text-color: @red;
+}
+
+element normal active {
+  text-color: @accent;
+}
+
+element alternate active {
+  text-color: @accent;
+}
+
+element selected {
+  text-color: @light;
+}
+
+element selected normal,
+element selected active {
+  background-color: @accent;
+}
+
+element selected urgent {
+  background-color: @red;
+}
+
+element-icon {
+  size: 0.8em;
+}
+
+element-text {
+  text-color: inherit;
+}

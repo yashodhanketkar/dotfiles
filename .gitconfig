@@ -1,0 +1,21 @@
+# This is Git's per-user configuration file.
+# Please adapt and uncomment the following lines:
+[user]
+  name = Yashodhan Ketkar
+  email = kykyashodhan@gmail.com
+[init]
+  defaultBranch = main
+[core]
+  editor = nvim
+[commit]
+  verbose = true
+  gpgsign = true
+[rebase]
+  autostash = true
+[safe]
+	directory = *
+[fetch]
+  prune = true
+  prunetags = true
+[log]
+  date = iso

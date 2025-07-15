@@ -1,0 +1,210 @@
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 16px;
+  border-radius: 0.5rem;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* Color variables */
+window {
+  background: transparent;
+  border: 1px solid @accent;
+}
+
+#outer-box {
+  background: @dark_06;
+}
+
+#input {
+  background: @selection_02;
+  padding: 0.5rem;
+  color: @light;
+  border: 1px solid @light_01;
+}
+
+#input image {
+  padding: 0 10px;
+}
+
+#inner-box {
+  margin-top: 8px;
+}
+
+#entry {
+  background: transparent;
+  color: @light_06;
+  padding: 8px;
+  outline: none;
+}
+
+#entry:selected {
+  text-shadow: 0 0 0.25rem @light_06;
+  box-shadow: inset 0 0 2px 1px @light_03;
+  background: @accent_02;
+}
+
+#entry:active {
+  color: @green;
+}
+
+#entry.urgent {
+  color: @red;
+}
+
+#entry image {
+  margin-right: 0.5rem;
+  min-width: 1em;
+}
+
+#entrybox {
+  padding: 4px 0;
+}
+
+#outer-box {
+  padding: 8px;
+}
+
+@define-color black_01 rgba(0, 0, 0, 0.1);
+@define-color black_02 rgba(0, 0, 0, 0.2);
+@define-color black_03 rgba(0, 0, 0, 0.3);
+@define-color black_04 rgba(0, 0, 0, 0.4);
+@define-color black_05 rgba(0, 0, 0, 0.5);
+@define-color black_06 rgba(0, 0, 0, 0.6);
+@define-color black_07 rgba(0, 0, 0, 0.7);
+@define-color black_08 rgba(0, 0, 0, 0.8);
+@define-color black_09 rgba(0, 0, 0, 0.9);
+@define-color black rgb(0, 0, 0);
+
+@define-color dark_01 rgba(40, 42, 54, 0.1);
+@define-color dark_02 rgba(40, 42, 54, 0.2);
+@define-color dark_03 rgba(40, 42, 54, 0.3);
+@define-color dark_04 rgba(40, 42, 54, 0.4);
+@define-color dark_05 rgba(40, 42, 54, 0.5);
+@define-color dark_06 rgba(40, 42, 54, 0.6);
+@define-color dark_07 rgba(40, 42, 54, 0.7);
+@define-color dark_08 rgba(40, 42, 54, 0.8);
+@define-color dark_09 rgba(40, 42, 54, 0.9);
+@define-color dark rgb(40, 42, 54);
+
+@define-color light_01 rgba(248, 248, 242, 0.1);
+@define-color light_02 rgba(248, 248, 242, 0.2);
+@define-color light_03 rgba(248, 248, 242, 0.3);
+@define-color light_04 rgba(248, 248, 242, 0.4);
+@define-color light_05 rgba(248, 248, 242, 0.5);
+@define-color light_06 rgba(248, 248, 242, 0.6);
+@define-color light_07 rgba(248, 248, 242, 0.7);
+@define-color light_08 rgba(248, 248, 242, 0.8);
+@define-color light_09 rgba(248, 248, 242, 0.9);
+@define-color light rgb(248, 248, 242);
+
+@define-color accent_01 rgba(68, 71, 90, 0.1);
+@define-color accent_02 rgba(68, 71, 90, 0.2);
+@define-color accent_03 rgba(68, 71, 90, 0.3);
+@define-color accent_04 rgba(68, 71, 90, 0.4);
+@define-color accent_05 rgba(68, 71, 90, 0.5);
+@define-color accent_06 rgba(68, 71, 90, 0.6);
+@define-color accent_07 rgba(68, 71, 90, 0.7);
+@define-color accent_08 rgba(68, 71, 90, 0.8);
+@define-color accent_09 rgba(68, 71, 90, 0.9);
+@define-color accent rgb(68, 71, 90);
+
+@define-color selection_01 rgba(68, 71, 90, 0.1);
+@define-color selection_02 rgba(68, 71, 90, 0.2);
+@define-color selection_03 rgba(68, 71, 90, 0.3);
+@define-color selection_04 rgba(68, 71, 90, 0.4);
+@define-color selection_05 rgba(68, 71, 90, 0.5);
+@define-color selection_06 rgba(68, 71, 90, 0.6);
+@define-color selection_07 rgba(68, 71, 90, 0.7);
+@define-color selection_08 rgba(68, 71, 90, 0.8);
+@define-color selection_09 rgba(68, 71, 90, 0.9);
+@define-color selection rgb(68, 71, 90);
+
+@define-color comment_01 rgba(98, 114, 164, 0.1);
+@define-color comment_02 rgba(98, 114, 164, 0.2);
+@define-color comment_03 rgba(98, 114, 164, 0.3);
+@define-color comment_04 rgba(98, 114, 164, 0.4);
+@define-color comment_05 rgba(98, 114, 164, 0.5);
+@define-color comment_06 rgba(98, 114, 164, 0.6);
+@define-color comment_07 rgba(98, 114, 164, 0.7);
+@define-color comment_08 rgba(98, 114, 164, 0.8);
+@define-color comment_09 rgba(98, 114, 164, 0.9);
+@define-color comment rgb(98, 114, 164);
+
+@define-color cyan_01 rgba(139, 233, 253, 0.1);
+@define-color cyan_02 rgba(139, 233, 253, 0.2);
+@define-color cyan_03 rgba(139, 233, 253, 0.3);
+@define-color cyan_04 rgba(139, 233, 253, 0.4);
+@define-color cyan_05 rgba(139, 233, 253, 0.5);
+@define-color cyan_06 rgba(139, 233, 253, 0.6);
+@define-color cyan_07 rgba(139, 233, 253, 0.7);
+@define-color cyan_08 rgba(139, 233, 253, 0.8);
+@define-color cyan_09 rgba(139, 233, 253, 0.9);
+@define-color cyan rgb(139, 233, 253);
+
+@define-color green_01 rgba(80, 250, 123, 0.1);
+@define-color green_02 rgba(80, 250, 123, 0.2);
+@define-color green_03 rgba(80, 250, 123, 0.3);
+@define-color green_04 rgba(80, 250, 123, 0.4);
+@define-color green_05 rgba(80, 250, 123, 0.5);
+@define-color green_06 rgba(80, 250, 123, 0.6);
+@define-color green_07 rgba(80, 250, 123, 0.7);
+@define-color green_08 rgba(80, 250, 123, 0.8);
+@define-color green_09 rgba(80, 250, 123, 0.9);
+@define-color green rgb(80, 250, 123);
+
+@define-color orange_01 rgba(255, 184, 108, 0.1);
+@define-color orange_02 rgba(255, 184, 108, 0.2);
+@define-color orange_03 rgba(255, 184, 108, 0.3);
+@define-color orange_04 rgba(255, 184, 108, 0.4);
+@define-color orange_05 rgba(255, 184, 108, 0.5);
+@define-color orange_06 rgba(255, 184, 108, 0.6);
+@define-color orange_07 rgba(255, 184, 108, 0.7);
+@define-color orange_08 rgba(255, 184, 108, 0.8);
+@define-color orange_09 rgba(255, 184, 108, 0.9);
+@define-color orange rgb(255, 184, 108);
+
+@define-color pink_01 rgba(255, 121, 198, 0.1);
+@define-color pink_02 rgba(255, 121, 198, 0.2);
+@define-color pink_03 rgba(255, 121, 198, 0.3);
+@define-color pink_04 rgba(255, 121, 198, 0.4);
+@define-color pink_05 rgba(255, 121, 198, 0.5);
+@define-color pink_06 rgba(255, 121, 198, 0.6);
+@define-color pink_07 rgba(255, 121, 198, 0.7);
+@define-color pink_08 rgba(255, 121, 198, 0.8);
+@define-color pink_09 rgba(255, 121, 198, 0.9);
+@define-color pink rgb(255, 121, 198);
+
+@define-color purple_01 rgba(189, 147, 249, 0.1);
+@define-color purple_02 rgba(189, 147, 249, 0.2);
+@define-color purple_03 rgba(189, 147, 249, 0.3);
+@define-color purple_04 rgba(189, 147, 249, 0.4);
+@define-color purple_05 rgba(189, 147, 249, 0.5);
+@define-color purple_06 rgba(189, 147, 249, 0.6);
+@define-color purple_07 rgba(189, 147, 249, 0.7);
+@define-color purple_08 rgba(189, 147, 249, 0.8);
+@define-color purple_09 rgba(189, 147, 249, 0.9);
+@define-color purple rgb(189, 147, 249);
+
+@define-color red_01 rgba(255, 85, 85, 0.1);
+@define-color red_02 rgba(255, 85, 85, 0.2);
+@define-color red_03 rgba(255, 85, 85, 0.3);
+@define-color red_04 rgba(255, 85, 85, 0.4);
+@define-color red_05 rgba(255, 85, 85, 0.5);
+@define-color red_06 rgba(255, 85, 85, 0.6);
+@define-color red_07 rgba(255, 85, 85, 0.7);
+@define-color red_08 rgba(255, 85, 85, 0.8);
+@define-color red_09 rgba(255, 85, 85, 0.9);
+@define-color red rgb(255, 85, 85);
+
+@define-color yellow_01 rgba(241, 250, 140, 0.1);
+@define-color yellow_02 rgba(241, 250, 140, 0.2);
+@define-color yellow_03 rgba(241, 250, 140, 0.3);
+@define-color yellow_04 rgba(241, 250, 140, 0.4);
+@define-color yellow_05 rgba(241, 250, 140, 0.5);
+@define-color yellow_06 rgba(241, 250, 140, 0.6);
+@define-color yellow_07 rgba(241, 250, 140, 0.7);
+@define-color yellow_08 rgba(241, 250, 140, 0.8);
+@define-color yellow_09 rgba(241, 250, 140, 0.9);
+@define-color yellow rgb(241, 250, 140);

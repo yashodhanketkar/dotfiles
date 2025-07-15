@@ -1,0 +1,168 @@
+/* NOTE: Black */
+@define-color black_01 rgba(0, 0, 0, 0.1);
+@define-color black_02 rgba(0, 0, 0, 0.2);
+@define-color black_03 rgba(0, 0, 0, 0.3);
+@define-color black_04 rgba(0, 0, 0, 0.4);
+@define-color black_05 rgba(0, 0, 0, 0.5);
+@define-color black_06 rgba(0, 0, 0, 0.6);
+@define-color black_07 rgba(0, 0, 0, 0.7);
+@define-color black_08 rgba(0, 0, 0, 0.8);
+@define-color black_09 rgba(0, 0, 0, 0.9);
+@define-color black rgb(0, 0, 0);
+
+/* NOTE: Dark */
+@define-color dark_01 rgba({{ background | rgb}}, 0.1);
+@define-color dark_02 rgba({{ background | rgb}}, 0.2);
+@define-color dark_03 rgba({{ background | rgb}}, 0.3);
+@define-color dark_04 rgba({{ background | rgb}}, 0.4);
+@define-color dark_05 rgba({{ background | rgb}}, 0.5);
+@define-color dark_06 rgba({{ background | rgb}}, 0.6);
+@define-color dark_07 rgba({{ background | rgb}}, 0.7);
+@define-color dark_08 rgba({{ background | rgb}}, 0.8);
+@define-color dark_09 rgba({{ background | rgb}}, 0.9);
+@define-color dark rgb({{ background | rgb }});
+
+/* NOTE: Light */
+@define-color light_01 rgba({{ foreground | rgb}}, 0.1);
+@define-color light_02 rgba({{ foreground | rgb}}, 0.2);
+@define-color light_03 rgba({{ foreground | rgb}}, 0.3);
+@define-color light_04 rgba({{ foreground | rgb}}, 0.4);
+@define-color light_05 rgba({{ foreground | rgb}}, 0.5);
+@define-color light_06 rgba({{ foreground | rgb}}, 0.6);
+@define-color light_07 rgba({{ foreground | rgb}}, 0.7);
+@define-color light_08 rgba({{ foreground | rgb}}, 0.8);
+@define-color light_09 rgba({{ foreground | rgb}}, 0.9);
+@define-color light rgb({{ foreground | rgb}});
+
+/* NOTE: Accent */
+@define-color accent_01 rgba({{ cursor | rgb}}, 0.1);
+@define-color accent_02 rgba({{ cursor | rgb}}, 0.2);
+@define-color accent_03 rgba({{ cursor | rgb}}, 0.3);
+@define-color accent_04 rgba({{ cursor | rgb}}, 0.4);
+@define-color accent_05 rgba({{ cursor | rgb}}, 0.5);
+@define-color accent_06 rgba({{ cursor | rgb}}, 0.6);
+@define-color accent_07 rgba({{ cursor | rgb}}, 0.7);
+@define-color accent_08 rgba({{ cursor | rgb}}, 0.8);
+@define-color accent_09 rgba({{ cursor | rgb}}, 0.9);
+@define-color accent rgb({{ cursor | rgb }});
+
+/* NOTE: Selection */
+@define-color selection_01 rgba({{ color1 | rgb}}, 0.1);
+@define-color selection_02 rgba({{ color1 | rgb}}, 0.2);
+@define-color selection_03 rgba({{ color1 | rgb}}, 0.3);
+@define-color selection_04 rgba({{ color1 | rgb}}, 0.4);
+@define-color selection_05 rgba({{ color1 | rgb}}, 0.5);
+@define-color selection_06 rgba({{ color1 | rgb}}, 0.6);
+@define-color selection_07 rgba({{ color1 | rgb}}, 0.7);
+@define-color selection_08 rgba({{ color1 | rgb}}, 0.8);
+@define-color selection_09 rgba({{ color1 | rgb}}, 0.9);
+@define-color selection rgb({{ color1 | rgb}});
+
+/* NOTE: Comment */
+@define-color comment_01 rgba({{ color2 | rgb}}, 0.1);
+@define-color comment_02 rgba({{ color2 | rgb}}, 0.2);
+@define-color comment_03 rgba({{ color2 | rgb}}, 0.3);
+@define-color comment_04 rgba({{ color2 | rgb}}, 0.4);
+@define-color comment_05 rgba({{ color2 | rgb}}, 0.5);
+@define-color comment_06 rgba({{ color2 | rgb}}, 0.6);
+@define-color comment_07 rgba({{ color2 | rgb}}, 0.7);
+@define-color comment_08 rgba({{ color2 | rgb}}, 0.8);
+@define-color comment_09 rgba({{ color2 | rgb}}, 0.9);
+@define-color comment rgb({{ color2 | rgb}});
+
+/* NOTE: Cyan */
+@define-color cyan_01 rgba(139, 233, 253, 0.1);
+@define-color cyan_02 rgba(139, 233, 253, 0.2);
+@define-color cyan_03 rgba(139, 233, 253, 0.3);
+@define-color cyan_04 rgba(139, 233, 253, 0.4);
+@define-color cyan_05 rgba(139, 233, 253, 0.5);
+@define-color cyan_06 rgba(139, 233, 253, 0.6);
+@define-color cyan_07 rgba(139, 233, 253, 0.7);
+@define-color cyan_08 rgba(139, 233, 253, 0.8);
+@define-color cyan_09 rgba(139, 233, 253, 0.9);
+@define-color cyan rgb(139, 233, 253);
+
+/* NOTE: Green */
+@define-color green_01 rgba(80, 250, 123, 0.1);
+@define-color green_02 rgba(80, 250, 123, 0.2);
+@define-color green_03 rgba(80, 250, 123, 0.3);
+@define-color green_04 rgba(80, 250, 123, 0.4);
+@define-color green_05 rgba(80, 250, 123, 0.5);
+@define-color green_06 rgba(80, 250, 123, 0.6);
+@define-color green_07 rgba(80, 250, 123, 0.7);
+@define-color green_08 rgba(80, 250, 123, 0.8);
+@define-color green_09 rgba(80, 250, 123, 0.9);
+@define-color green rgb(80, 250, 123);
+
+/* NOTE: Orange */
+@define-color orange_01 rgba(255, 184, 108, 0.1);
+@define-color orange_02 rgba(255, 184, 108, 0.2);
+@define-color orange_03 rgba(255, 184, 108, 0.3);
+@define-color orange_04 rgba(255, 184, 108, 0.4);
+@define-color orange_05 rgba(255, 184, 108, 0.5);
+@define-color orange_06 rgba(255, 184, 108, 0.6);
+@define-color orange_07 rgba(255, 184, 108, 0.7);
+@define-color orange_08 rgba(255, 184, 108, 0.8);
+@define-color orange_09 rgba(255, 184, 108, 0.9);
+@define-color orange rgb(255, 184, 108);
+
+/* NOTE: Pink */
+@define-color pink_01 rgba(255, 121, 198, 0.1);
+@define-color pink_02 rgba(255, 121, 198, 0.2);
+@define-color pink_03 rgba(255, 121, 198, 0.3);
+@define-color pink_04 rgba(255, 121, 198, 0.4);
+@define-color pink_05 rgba(255, 121, 198, 0.5);
+@define-color pink_06 rgba(255, 121, 198, 0.6);
+@define-color pink_07 rgba(255, 121, 198, 0.7);
+@define-color pink_08 rgba(255, 121, 198, 0.8);
+@define-color pink_09 rgba(255, 121, 198, 0.9);
+@define-color pink rgb(255, 121, 198);
+
+/* NOTE: Purple */
+@define-color purple_01 rgba(189, 147, 249, 0.1);
+@define-color purple_02 rgba(189, 147, 249, 0.2);
+@define-color purple_03 rgba(189, 147, 249, 0.3);
+@define-color purple_04 rgba(189, 147, 249, 0.4);
+@define-color purple_05 rgba(189, 147, 249, 0.5);
+@define-color purple_06 rgba(189, 147, 249, 0.6);
+@define-color purple_07 rgba(189, 147, 249, 0.7);
+@define-color purple_08 rgba(189, 147, 249, 0.8);
+@define-color purple_09 rgba(189, 147, 249, 0.9);
+@define-color purple rgb(189, 147, 249);
+
+/* NOTE: Red */
+@define-color red_01 rgba(255, 85, 85, 0.1);
+@define-color red_02 rgba(255, 85, 85, 0.2);
+@define-color red_03 rgba(255, 85, 85, 0.3);
+@define-color red_04 rgba(255, 85, 85, 0.4);
+@define-color red_05 rgba(255, 85, 85, 0.5);
+@define-color red_06 rgba(255, 85, 85, 0.6);
+@define-color red_07 rgba(255, 85, 85, 0.7);
+@define-color red_08 rgba(255, 85, 85, 0.8);
+@define-color red_09 rgba(255, 85, 85, 0.9);
+@define-color red rgb(255, 85, 85);
+
+/* NOTE: Yellow */
+@define-color yellow_01 rgba(241, 250, 140, 0.1);
+@define-color yellow_02 rgba(241, 250, 140, 0.2);
+@define-color yellow_03 rgba(241, 250, 140, 0.3);
+@define-color yellow_04 rgba(241, 250, 140, 0.4);
+@define-color yellow_05 rgba(241, 250, 140, 0.5);
+@define-color yellow_06 rgba(241, 250, 140, 0.6);
+@define-color yellow_07 rgba(241, 250, 140, 0.7);
+@define-color yellow_08 rgba(241, 250, 140, 0.8);
+@define-color yellow_09 rgba(241, 250, 140, 0.9);
+@define-color yellow rgb(241, 250, 140);
+
+/* NOTE: SwayNotificationCenter */
+@define-color noti-bg rgba({{ cursor | rgb }}, 0.8);
+@define-color noti-bg rgb({{ cursor | darken(0.1) | rgb }});
+@define-color noti-close-bg rgba(255, 255, 255, 0.1);
+
+@define-color button-bg rgb(241, 250, 140);
+@define-color button-fg rgba(241, 250, 140, 0.8);
+
+/*
+@define-color button-bg rgb(40, 42, 54);
+@define-color button-fg rgba(248, 248, 242, 0.8);
+*/

@@ -1,0 +1,22 @@
+return {
+	primary = {
+		orientation = { Linear = { angle = -45.0 } },
+		colors = {
+			"{{ color1 | blend('#000000') }}FF",
+			"{{ color1 | blend('#000000') }}AA",
+			"{{ color1 | blend('#000000') }}FF",
+		},
+		interpolation = "Linear",
+		blend = "Rgb",
+	},
+	colors = {
+		selection_fg = "{{ color1 | complementary | lighten(0.5) }}",
+		selection_bg = "{{ color1 | darken(0.5) }}",
+		foreground = "{{ cursor }}",
+		cursor_bg = "{{ cursor }}",
+		cursor_fg = "{{ foreground }}",
+		scrollbar_thumb = "{{ cursor }}",
+		split = "{{ color1 }}",
+		compose_cursor = "{{ color10 }}",
+	},
+}

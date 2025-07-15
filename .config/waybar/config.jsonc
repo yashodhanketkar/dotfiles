@@ -1,0 +1,202 @@
+[
+  {
+    "name": "main",
+    "layer": "top",
+    "position": "top",
+    "reload_style_on_change": true,
+    "spacing": 0,
+    "height": 34,
+
+    "modules-left": [
+      "group/mediacontrols"
+    ],
+    "group/mediacontrols": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true
+      },
+      "modules": [
+        "wireplumber",
+        "backlight",
+        "custom/kbdbacklight"
+      ]
+    },
+    "wireplumber": {
+      "format": "{icon} {volume}",
+      "format-bluetooth": "󰂰",
+      "nospacing": 1,
+      "tooltip-format": "Volume : {volume}%",
+      "format-muted": "󰝟 {volume}",
+      "format-icons": {
+        "headphone": "",
+        "default": ["󰖀","󰕾",""]
+      },
+      "on-click": "~/.config/waybar/scripts/soundclick.sh",
+      "on-click-right": "pavucontrol",
+      "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+      "scroll-step": 1
+    },
+    "backlight": {
+      "format": "{icon} {percent}",
+      "tooltip-format": "Backlight: {percent}%",
+      "format-icons": [""]
+    },
+    "custom/kbdbacklight": {
+      "exec": "~/.config/waybar/scripts/kbdbacklight.sh get",
+      "on-click": "~/.config/waybar/scripts/kbdbacklight.sh set",
+      "format": "{icon} {text}",
+      "return-type": "json",
+      "format-icons": [""],
+      "signal": 8
+    },
+
+    "modules-center": [
+      "hyprland/workspaces"
+    ],
+    "hyprland/workspaces": {
+      "on-click": "activate",
+      "format": "{id}"
+    },
+
+    "modules-right": [
+      "bluetooth",
+      "network",
+      "memory",
+      "battery",
+      "clock",
+      "group/status"
+    ],
+    "group/status": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "not-status-lol",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "custom/notifications",
+        "custom/power",
+        "custom/lock"
+      ]
+    },
+    "bluetooth": {
+      "format": "{icon} {status}",
+      "format-connected": "{icon} {device_battery_percentage}%",
+      "tooltip-format-connected": "{icon} {device_alias} ({device_battery_percentage}%)",
+      "on-click": "~/.config/waybar/scripts/bluetooth.sh toggle_power",
+      "on-click-right": "~/.config/waybar/scripts/bluetooth.sh toggle_discoverable",
+      "format-icons": {
+        "default": "󰂰"
+      }
+    },
+    "network": {
+      "format-wifi" : "{icon} {essid}",
+      "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+      "format-ethernet": "󰀂",
+      "format-alt" : "󱛇",
+      "format-disconnected" : "󰖪",
+      "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+      "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+      "tooltip-format-disconnected": "Disconnected",
+      "interval": 5,
+      "nospacing": 1
+    },
+    "memory": {
+      "interval": 5,
+      "format": "󰍛 {}%",
+      "max-length": 10
+    },
+    "custom/lock": {
+      "format": "{icon}",
+      "tooltip-format": "Lock Screen",
+      "format-icons": [""],
+      "on-click": "hyprlock --immediate"
+    },
+    "custom/power": {
+      "format": "󰤆",
+      "tooltip": false,
+      "on-click": "wlogout"
+    },
+    "wlr/taskbar": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "on-click-right": "fullscreen",
+      "icon-theme": "WhiteSur",
+      "icon-size": 25,
+      "tooltip-format": "{title}"
+    },
+    "battery": {
+      "format": "{capacity}% {icon}",
+      "format-icons": {
+        "charging": [ "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅" ],
+        "default": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ]
+      },
+      "format-full": "Charged ",
+      "interval": 5,
+      "states": {
+        "warning": 20,
+        "critical": 10
+      },
+      "tooltip-format": "Battery: {capacity}% {time}"
+    },
+    "include": [
+      "~/.config/waybar/clock.jsonc"
+    ],
+    "custom/notifications": {
+      "tooltip" : false,
+      "format" : "<b>{}</b> {icon}",
+      "format-icons" : {
+        "notification" : "󱅫",
+        "none" : "",
+        "dnd-notification" : " ",
+        "dnd-none" : "󰂛",
+        "inhibited-notification" : " ",
+        "inhibited-none" : "",
+        "dnd-inhibited-notification" : " ",
+        "dnd-inhibited-none" : " "
+      },
+      "return-type" : "json",
+      "exec-if" : "which swaync-client",
+      "exec" : "swaync-client -swb",
+      "on-click" : "sleep 0.1 && swaync-client -t -sw",
+      "on-click-right" : "sleep 0.1 && swaync-client -d -sw",
+      "escape" : true
+    }
+  },
+  {
+    "name": "side",
+    "layer": "top",
+    "position": "left",
+    "reload_style_on_change": true,
+    "modules-center": [
+      "mpris"
+    ],
+    "mpris": {
+      "player": "spotify",
+      "format": "{player_icon} {dynamic}",
+      "format-paused": "{status_icon} {dynamic}",
+      "rotate": 90,
+      "expand": true,
+      "player-icons": {
+        "default": "",
+        "spotify": ""
+      },
+      "status-icons": {
+        "paused": "",
+        "playing": ""
+      },
+      "dynamic-order": ["title", "artist"]
+    }
+  },
+  {
+    "name": "submap",
+    "layer": "top",
+    "mode": "overlaj",
+    "position": "bottom",
+    "reload_style_on_change": true,
+    "modules-center" : [
+      "hyprland/submap"
+    ]
+  }
+]

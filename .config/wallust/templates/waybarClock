@@ -1,0 +1,22 @@
+{
+  "clock": {
+    "tooltip-format": "<tt><big>{calendar}</big></tt>",
+    "format-alt": "  {:%a, %d %b %Y %R}",
+    "format": "  {:%H:%M}",
+    "calendar": {
+      "mode"          : "year",
+      "mode-mon-col"  : 4,
+      "on-scroll"     : 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='{{ color4 }}'><b>{}</b></span>",
+        "weekdays": "<span color='{{ color2 }}'><b>{}</b></span>",
+        "days": "<span color='{{ color3 }}'>{}</span>",
+        "today": "<span color='{{ color5 }}'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode"
+    }
+  }
+}

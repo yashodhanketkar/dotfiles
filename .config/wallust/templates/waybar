@@ -1,0 +1,30 @@
+@define-color foreground {{foreground}};
+@define-color background {{background }};
+@define-color workspace_background alpha({{ background }}, 0.2);
+@define-color cursor {{cursor}};
+
+@define-color accent_01 {{color0}};
+@define-color accent_02 {{color1}};
+@define-color accent_03 {{color2}};
+@define-color accent_04 {{color3}};
+@define-color accent_05 {{color4}};
+@define-color accent_06 {{color5}};
+@define-color accent_07 {{color6}};
+@define-color accent_08 {{color7}};
+@define-color accent_09 {{color8}};
+@define-color accent_10 {{color9}};
+@define-color accent_11 {{color10}};
+@define-color accent_12 {{color11}};
+@define-color accent_13 {{color12}};
+@define-color accent_14 {{color13}};
+@define-color accent_15 {{color14}};
+@define-color accent_16 {{color15}};
+@define-color danger {{ color15 | blend("#FF0000") }};
+
+@define-color spotify-black #231f20;
+@define-color spotify-green #1ed760;
+@define-color spotify-white #f9f9f9;
+
+@define-color spotify-black-opaque alpha(#231f20, 0.4);
+@define-color spotify-green-opaque alpha(#1ed760, 0.7);
+@define-color spotify-white-opaque alpha(#f9f9f9, 0.7);

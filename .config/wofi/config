@@ -1,0 +1,15 @@
+show-icons=true
+prompt=Apps...
+width=45%
+lines=8
+location=center
+allow-markup=true
+always_parse_args=false
+insensitive=true
+term=foot
+layer=overlay
+hide_scroll=true
+no_actions=true
+allow_images=true
+image_size=36
+matching=fuzzy

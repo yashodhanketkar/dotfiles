@@ -1,0 +1,168 @@
+@theme "/dev/null"
+
+* {
+  focused: #FFFFFF;
+  unfocused: #404040;
+  active: #404040;
+  inactive: #303030;
+  urgent: #282828;
+  placeholder: #282A2E;
+  binding: #282828;
+  text: #F0F0F0;
+  text-focused: #000000;
+  border: #606060;
+
+  font: "UbuntuMono 12";
+
+  background-color: @placeholder;
+  foreground: @text;
+  active-background: @inactive;
+  active-foreground: @text;
+  urgent-background: @urgent;
+  urgent-foreground: @text;
+  selected-background: @focused;
+  selected-foreground: @text-focused;
+  selected-urgent-background: @placeholder;
+  selected-active-background: @binding;
+  separatorcolor: @text;
+  bordercolor: @border;
+}
+
+configuration {
+  show-icons: true;
+  display-drun: " ";
+  display-window: "W:";
+}
+
+#window {
+  background-color: @background-color;
+  border: 3;
+  border-radius: 6;
+  border-color: @bordercolor;
+  padding: 15;
+  width: 65%;
+}
+
+#mainbox {
+  border: 0;
+  padding: 0;
+}
+
+#message {
+  border: 0px;
+  border-color: @separatorcolor;
+  padding: 1px;
+}
+
+#textbox {
+  text-color: @foreground;
+}
+
+#listview {
+  fixed-height: 0;
+  columns: 2;
+  border: 0px;
+  border-color: @bordercolor;
+  spacing: 2px;
+  scrollbar: false;
+  padding: 2px 0px 0px;
+}
+
+#element {
+  border: 0;
+  padding: 5;
+  margin: 0 5;
+  border-radius: 5;
+}
+
+#element.normal {
+  background-color: @background-color;
+  text-color: @foreground;
+}
+
+#element.urgent {
+  background-color: @urgent-background;
+  text-color: @urgent-foreground;
+}
+
+#element.active {
+  background-color: @active-background;
+  text-color: @text;
+}
+
+#element.selected.normal {
+  background-color: @selected-background;
+  text-color: @text-focused;
+}
+
+#element.selected.urgent {
+  background-color: @selected-urgent-background;
+  text-color: @foreground;
+}
+
+#element.selected.active {
+  background-color: @selected-active-background;
+  text-color: @text;
+}
+
+#scrollbar {
+  width: 2px;
+  border: 0;
+  handle-width: 8px;
+  padding: 0;
+}
+
+#sidebar {
+  border: 2px dash 0px 0px;
+  border-color: @separatorcolor;
+}
+
+#button.selected {
+  background-color: @selected-background;
+  text-color: @text-focused;
+}
+
+#inputbar {
+  spacing: 0;
+  text-color: @foreground;
+  padding: 5;
+  margin: 5 0;
+}
+
+#inputbar {
+  children: [prompt, textbox-prompt-colon, entry];
+}
+
+#prompt {
+  spacing: 0;
+  text-color: @text;
+  padding: 5 0 5 5;
+  border: 2 0 2 2;
+  border-color: @bordercolor;
+  border-radius: 5 0 0 5;
+}
+
+#textbox-prompt-colon {
+  expand: false;
+  str: ":";
+  margin: 0;
+  padding: 5 0;
+  border: 2 0 2 0;
+  border-color: @bordercolor;
+  text-color: @text;
+}
+
+#entry {
+  spacing: 0;
+  padding: 5 5;
+  border: 2 2 2 0;
+  border-color: @bordercolor;
+  border-radius: 0 5 5 0;
+  text-color: @text;
+}
+
+element-text,
+element-icon {
+  background-color: inherit;
+  text-color: inherit;
+}

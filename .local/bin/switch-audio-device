@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Set default next sink id
+NEXT_SINK_ID=0
+
+# Get the list of available sink IDs and current sink ID
+SINKS=($(pactl list sinks | grep 'Name' | awk '{ print $2 }'))
+CURR_SINK=$(pactl get-default-sink)
+
+
+# Get the next sink ID
+for i in "${!SINKS[@]}"; do
+  if [[ "${SINKS[$i]}" == "$CURR_SINK" ]]; then
+    NEXT_SINK_ID=$(( (i + 1) % ${#SINKS[@]} ))
+    break
+  fi
+done
+
+echo $CURR_SINK
+echo $NEXT_SINK_ID
+
+# Set the default sink
+pactl set-default-sink ${SINKS[$NEXT_SINK_ID]}

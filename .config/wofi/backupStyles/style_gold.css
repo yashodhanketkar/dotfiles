@@ -1,0 +1,57 @@
+* {
+  font-family: "UbuntuMono";
+  font-size: 12pt;
+  border-radius: 4px;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* Color variables */
+window {
+  background-color: rgba(40, 42, 46, 0.7); /* #282A2EDD */
+  border: 1px solid rgba(251, 169, 34, 0.33); /* #FBA92255 */
+}
+
+#input {
+  background-color: #373B41;
+  padding: 8px;
+  color: #C5C8C6;
+  border: 1px solid transparent;
+}
+
+#input image {
+  padding: 0 10px;
+}
+
+#entry {
+  background-color: transparent;
+  color: #C5C8C6;
+  padding: 8px;
+}
+
+#entry:selected {
+  background-color: #FBA922;
+  color: #282A2E;
+}
+
+#entry:active {
+  color: #FBA922;
+}
+
+#entry.urgent {
+  color: #A54242;
+}
+
+#entry image {
+  margin-right: 8px;
+  min-width: 1em;
+}
+
+#entrybox {
+  padding: 4px 0;
+}
+
+#outer-box {
+  padding: 8px;
+}

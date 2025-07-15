@@ -1,0 +1,63 @@
+@import url("./colors.css");
+
+* {
+  all: unset;
+  transition: all 100ms ease-in-out;
+}
+
+window {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 16pt;
+  color: @light;
+  background-color: @accent_02;
+}
+
+button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 25%;
+  background-position: center;
+  background-color: transparent;
+  color: transparent;
+  border: none;
+  margin: 1em;
+  border-radius: 2em;
+  box-shadow: none;
+  outline: none;
+  border: 1px solid @light_03;
+  box-shadow: 0 0 0.5rem 0.25rem @light_03;
+}
+
+button:focus:hover,
+button:hover {
+  background-color: @selection_04;
+}
+
+button:focus {
+  background-size: 35%;
+}
+
+#lock {
+  background-image: image(url("./icons/lock.png"));
+}
+
+
+#logout {
+  background-image: image(url("./icons/logout.png"));
+}
+
+#suspend {
+  background-image: image(url("./icons/suspend.png"));
+}
+
+#reboot {
+  background-image: image(url("./icons/reboot.png"));
+}
+
+#shutdown {
+  background-image: image(url("./icons/shutdown.png"));
+}
+
+#hibernate {
+  background-image: image(url("./icons/hibernate.png"));
+}

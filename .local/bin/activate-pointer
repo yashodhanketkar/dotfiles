@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Create and assing Null ID
+TOUCHPAD_ID=""
+MOUSE_ID=""
+
+# Gets touchpads ID
+TOUCHPAD_ID=$(xinput | sed '/Touchpad/s/.*id=\([0-9]*\).*/\1/;t;d')
+MOUSE_ID=$(xinput --list | awk '/Logitech/ && !/Keyboard/' | sed 's/.*id=\([0-9]*\).*/\1/;t;d')
+
+if [[ -n $TOUCHPAD_ID ]] then
+  # Enables tapping mode
+  xinput set-prop $TOUCHPAD_ID 'libinput Tapping Enabled' 1
+
+  # Set natural scrolling
+  xinput set-prop $TOUCHPAD_ID 'libinput Natural Scrolling Enabled' 1
+fi
+
+if [[ -n $MOUSE_ID ]] then
+  # Enables tapping mode
+  xinput set-prop $MOUSE_ID 'libinput Accel Profile Enabled' 0, 1, 0
+fi

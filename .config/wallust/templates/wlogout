@@ -1,0 +1,5 @@
+@define-color light rgb({{ foreground | rgb }});
+@define-color accent_02 rgba({{ color1 | rgb }}, 0.2);
+@define-color light_03 rgba({{ foreground | rgb }}, 0.3);
+@define-color light_03 rgba({{ foreground | rgb }}, 0.3);
+@define-color selection_04 rgba({{ color2 | rgb }}, 0.4);
