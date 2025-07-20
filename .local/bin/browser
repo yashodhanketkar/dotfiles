@@ -6,7 +6,7 @@
 
 BROWSER="firefox"
 SEARCHENGINE="https://duckduckgo.com/html/?q="
-BOOKMARKS_FILE=/tmp/shortcuts.txt
+BOOKMARKS_FILE=$HOME/private/shortcuts.txt
 
 ########################
 ### helper functions ###
