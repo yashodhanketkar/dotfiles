@@ -106,7 +106,9 @@ remove() {
     exit 0
   fi
   
-  sed -i "/^$deprecated_link$/d" $BOOKMARKS_FILE
+  safe_link=$(printf '%s\n' "$deprecated_link" | sed 's/[][\/.^$*]/\\&/g')
+
+  sed -i "\|^$safe_link$|d" $BOOKMARKS_FILE
   
   notify-send "Removed shortcut" "Removed \"$deprecated_link\" from the shortcuts list"
 }
