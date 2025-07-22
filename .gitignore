@@ -10,6 +10,8 @@
 .config/waybar/clock.jsonc
 .config/wlogout/colors.css
 .config/wofi/style.css
+.config/hypr/colors.conf
+.config/tmux/colors.conf
 
 # private
 .config/wezterm/lua/private/
