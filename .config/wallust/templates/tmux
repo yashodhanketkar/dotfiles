@@ -1,0 +1,7 @@
+set -g @nova-status-style-bg "{{ foreground }}"
+set -g @nova-status-style-fg "{{ background }}"
+set -g @nova-status-style-active-fg "{{ foreground }}"
+set -g @nova-status-style-active-bg "{{ color1 }}"
+
+set -g @nova-segment-mode-colors "{{ color1 }} {{ color7 }}"
+set -g @nova-segment-session-colors "{{ color1 }} {{ color7 }}"

@@ -52,3 +52,4 @@ swaync = { template = 'swaync', target = '~/.config/swaync/colors.css' }
 wlogout = { template = 'wlogout', target = '~/.config/wlogout/colors.css' }
 wezterm = { template = 'wezterm', target = '~/.config/wezterm/lua/private/gradient.lua' }
 hypr = { template = 'hypr', target = '~/.config/hypr/confs/colors.conf' }
+tmux = { template = 'tmux', target = '~/dotfiles/.config/tmux/colors.conf' }

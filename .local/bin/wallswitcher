@@ -76,6 +76,8 @@ else
   pkill waybar & hyprctl -q dispatch exec waybar
 fi
 
+tmux source-file ~/.config/tmux/colors.conf
+
 # start swaync if not running
 if [[ -z $(pidof swaync) ]]; then
   hyprctl -q dispatch exec swaync
