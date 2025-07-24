@@ -47,6 +47,7 @@ alias lvim="NVIM_APPNAME=lvim nvim"
 
 # custom keybinds
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^v "cliphist list | fzf | cliphist decode | wl-copy\n"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

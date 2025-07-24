@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-BROWSER="firefox"
-
 get_weather() {
   # curl -s 'wttr.in?format=%c+%C+%t\n%l'
   echo $(jq -r '"   "+.temperature+"°C ("+.feels_like+"°C)"' /tmp/weather.json)
@@ -92,6 +90,10 @@ sys_info() {
   echo CPU: $CPU_USAGE
   echo RAM: $RAM_USAGE
   echo DISK: $DISK_USAGE
+}
+
+clipboard() {
+  cliphist list | wofi --dmenu | cliphist decode | wl-copy
 }
 
 "$@"
