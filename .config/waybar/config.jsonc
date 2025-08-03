@@ -91,7 +91,7 @@
       }
     },
     "network": {
-      "format-wifi" : "{icon} {essid}",
+      "format-wifi" : "{icon}",
       "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
       "format-ethernet": "󰀂",
       "format-alt" : "󱛇",
@@ -132,7 +132,7 @@
         "charging": [ "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅" ],
         "default": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ]
       },
-      "format-full": "Charged ",
+      "format-full": "{capacity}% ",
       "interval": 5,
       "states": {
         "warning": 20,

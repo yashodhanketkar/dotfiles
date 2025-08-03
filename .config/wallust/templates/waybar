@@ -28,3 +28,6 @@
 @define-color spotify-black-opaque alpha(#231f20, 0.4);
 @define-color spotify-green-opaque alpha(#1ed760, 0.7);
 @define-color spotify-white-opaque alpha(#f9f9f9, 0.7);
+
+@define-color tooltip-background {{ color7 | blend("#FFFFFF") | lighten(0.55) }};
+@define-color tooltip-foreground {{ color7 | blend("#000000") | darken(0.55) }};

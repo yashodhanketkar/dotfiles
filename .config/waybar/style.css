@@ -62,18 +62,16 @@ window#waybar {
 }
 
 tooltip {
-  /* background-color: @accent_02; */
-  /* color: @accent_08; */
-  background-color: @background;
-  color: @foreground;
+  background-color: @tooltip-background;
+  color: @tooltip-foreground;
   border-radius: 0.5rem;
   padding: 1.2rem;
   text-shadow: none;
 }
 
 tooltip label {
-  background-color: @background;
-  color: @foreground;
+  background-color: @tooltip-background;
+  color: @tooltip-foreground;
   padding: 0.5rem;
 }
 
