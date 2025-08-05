@@ -192,7 +192,7 @@
   {
     "name": "submap",
     "layer": "top",
-    "mode": "overlaj",
+    "mode": "overlay",
     "position": "bottom",
     "reload_style_on_change": true,
     "modules-center" : [
