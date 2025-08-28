@@ -8,8 +8,20 @@
     "height": 34,
 
     "modules-left": [
-      "group/mediacontrols"
+      "group/mediacontrols",
+      "group/connections"
     ],
+    "group/connections": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true
+      },
+      "modules": [
+        "network",
+        "bluetooth"
+      ]
+    },
     "group/mediacontrols": {
       "orientation": "inherit",
       "drawer": {
@@ -50,6 +62,28 @@
       "format-icons": [""],
       "signal": 8
     },
+    "network": {
+      "format-wifi" : "{icon}",
+      "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+      "format-ethernet": "󰀂",
+      "format-alt" : "󱛇",
+      "format-disconnected" : "󰖪",
+      "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}\n{ipaddr}",
+      "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+      "tooltip-format-disconnected": "Disconnected",
+      "interval": 5,
+      "nospacing": 1
+    },
+    "bluetooth": {
+      "format": "{icon} {status}",
+      "format-connected": "{icon} {device_battery_percentage}%",
+      "tooltip-format-connected": "{icon} {device_alias} ({device_battery_percentage}%)",
+      "on-click": "~/.config/waybar/scripts/bluetooth.sh toggle_power",
+      "on-click-right": "~/.config/waybar/scripts/bluetooth.sh toggle_discoverable",
+      "format-icons": {
+        "default": "󰂰"
+      }
+    },
 
     "modules-center": [
       "hyprland/workspaces"
@@ -60,10 +94,8 @@
     },
 
     "modules-right": [
-      "bluetooth",
-      "network",
-      "memory",
       "battery",
+      "custom/sysinfo",
       "clock",
       "group/status"
     ],
@@ -80,32 +112,10 @@
         "custom/lock"
       ]
     },
-    "bluetooth": {
-      "format": "{icon} {status}",
-      "format-connected": "{icon} {device_battery_percentage}%",
-      "tooltip-format-connected": "{icon} {device_alias} ({device_battery_percentage}%)",
-      "on-click": "~/.config/waybar/scripts/bluetooth.sh toggle_power",
-      "on-click-right": "~/.config/waybar/scripts/bluetooth.sh toggle_discoverable",
-      "format-icons": {
-        "default": "󰂰"
-      }
-    },
-    "network": {
-      "format-wifi" : "{icon}",
-      "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-      "format-ethernet": "󰀂",
-      "format-alt" : "󱛇",
-      "format-disconnected" : "󰖪",
-      "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-      "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
-      "tooltip-format-disconnected": "Disconnected",
-      "interval": 5,
-      "nospacing": 1
-    },
-    "memory": {
-      "interval": 5,
-      "format": "󰍛 {}%",
-      "max-length": 10
+    "custom/sysinfo": {
+      "interval": 1,
+      "exec": "~/.config/waybar/scripts/sysinfo.sh sys_info",
+      "return-type": "json"
     },
     "custom/lock": {
       "format": "{icon}",
@@ -176,6 +186,9 @@
       "player": "spotify",
       "format": "{player_icon} {dynamic}",
       "format-paused": "{status_icon} {dynamic}",
+      "dyanmic-len": 60,
+      "title-len": 30,
+      "artist-len": 30,
       "rotate": 90,
       "expand": true,
       "player-icons": {
