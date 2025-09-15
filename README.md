@@ -39,6 +39,8 @@ home/username/
 ├── .local/
 │   └── bin/
 │       ├── activate-pointer
+│       ├── browser
+│       ├── gamemode
 │       ├── switch-audio-device
 │       ├── tmux-sessionizer
 │       └── wallswitcher
@@ -125,6 +127,10 @@ I3-wm script to turn off mouse acceleration and set-up touchpad.
 #### browser
 
 Open a browser with a given URL, saved bookmarks or search with search engine. Currently saved browser is firefox, search engine is duckduckgo.
+
+#### gamemode
+
+Toggle gamemode on/off (hyprland).
 
 #### switch-audio-device
 

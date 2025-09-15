@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+start() {
+  hyprctl --quiet --batch "\
+  keyword animations:enabled 0; \
+  keyword animation borderangle,0; \
+  keyword decoration:shadow:enabled 0; \
+  keyword decoration:blur:enabled 0; \
+  keyword decoration:fullscreen_opacity 1; \
+  keyword decoration:rounding 0; \
+  keyword general:gaps_in 0; \
+  keyword general:gaps_out 0; \
+  keyword general:border_size 0; \
+  "
+  echo "gamemode" > /tmp/gamemode.txt
+  hyprctl notify 2 5000 "rgb(E3242B)" "Gamemode  [ON]"
+}
+
+stop() {
+  hyprctl reload
+  if [ -f /tmp/gamemode.txt ]; then
+    rm /tmp/gamemode.txt
+  fi
+  hyprctl notify 2 5000 "rgb(37FD12)" "Gamemode [OFF]"
+}
+
+toggle() {
+
+  if [ ! -f /tmp/gamemode.txt ]; then
+    start
+    exit 0
+  fi
+
+  state=$(cat /tmp/gamemode.txt)
+  if [[ "$state" == "gamemode" ]]; then
+    stop
+  else
+    start
+  fi
+}
+
+"$@"

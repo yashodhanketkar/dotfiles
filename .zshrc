@@ -44,6 +44,7 @@ alias py="python3"
 alias lock="i3lock -i /home/lou/Pictures/lockalt.png -t"
 alias vim="nvim"
 alias lvim="NVIM_APPNAME=lvim nvim"
+alias code="~/vscode/bin/code"
 
 # custom keybinds
 bindkey -s ^f "tmux-sessionizer\n"

@@ -7,6 +7,7 @@
 BROWSER="firefox"
 SEARCHENGINE="https://duckduckgo.com/html/?q="
 BOOKMARKS_FILE=$HOME/private/shortcuts.txt
+WOFI_CMD="wofi -W 800 -d -p"
 
 ########################
 ### helper functions ###
@@ -21,13 +22,13 @@ display() {
     BOOKMARKS=$(< "$BOOKMARKS_FILE")
 
     if [[ "$context" == "Remove" ]]; then
-      link=$(echo -e "$BOOKMARKS" | wofi -d -p " $context: ")
+      link=$(echo -e "$BOOKMARKS" | $WOFI_CMD " $context: ")
     else 
-      link=$(echo -e "$BOOKMARKS\nOptions" | wofi -d -p " $context: ")
+      link=$(echo -e "$BOOKMARKS\nOptions" | $WOFI_CMD " $context: ")
     fi
 
   else
-    link=$(wofi -d -p " Open: ")
+    link=$($WOFI_CMD " Open: ")
   fi
 
   echo "$link"
@@ -44,7 +45,7 @@ is_exist() {
 
 # open browser with preferred search engine
 search() {
-  input=$(wofi -d -p " Search: ")
+  input=$($WOFI_CMD -d -p " Search: ")
 
   if [[ -z "$input" ]]; then
     exit 0
@@ -71,7 +72,7 @@ open() {
 
 # list available options
 options() {
-  choice=$(echo -e "Add\nRemove\nExit" | wofi -d -p " Options: ")
+  choice=$(echo -e "Add\nRemove\nExit" | $WOFI_CMD " Options: ")
 
   case "$choice" in
     Add) add;;
@@ -83,7 +84,7 @@ options() {
 # append links to shortcuts file
 # send apporpriate notification
 add() {
-  new_link=$(wofi -d -p " Add link: ")
+  new_link=$($WOFI_CMD " Add link: ")
   exist=$(is_exist "$new_link")
 
   if [[ $(( exist )) -eq 1 ]]; then
