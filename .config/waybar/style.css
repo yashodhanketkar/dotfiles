@@ -75,6 +75,11 @@ tooltip label {
   padding: 0.5rem;
 }
 
+#wireplumber.muted {
+  background: @accent_14;
+  color: @accent_01;
+}
+
 #bluetooth.off {
   background: @accent_14;
   color: @accent_01;

@@ -22,7 +22,7 @@ Includes current config files
 -	custom scripts
 -	docker (home media server)
 -	i3wm & ecosystem (i3status, polybar, rofi)
--	hyprland & ecosystem (hypridle, hyprlock, hyprpaper, waybar, wofi)
+-	hyprland & ecosystem (hypridle, hyprlock, hyprpaper, hyprsunset, waybar, wofi)
 -	swaync
 -	tmux
 -	wezterm
@@ -61,7 +61,8 @@ home/username/
 │     │   ├── hypridle.conf
 │     │   ├── hyprland.conf
 │     │   ├── hyprlock.conf
-│     │   └── hyprpaper.conf
+│     │   ├── hyprpaper.conf
+│     │   └── hyprsunset.conf
 │     ├── i3/
 │     │   ├── config
 │     │   └── i3status.config

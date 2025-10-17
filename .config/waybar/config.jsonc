@@ -8,7 +8,8 @@
     "height": 34,
 
     "modules-left": [
-      "group/mediacontrols",
+      "group/soundcontrols",
+      "group/lightcontrols",
       "group/connections"
     ],
     "group/connections": {
@@ -22,23 +23,33 @@
         "bluetooth"
       ]
     },
-    "group/mediacontrols": {
+    "group/soundcontrols": {
       "orientation": "inherit",
       "drawer": {
         "transition-duration": 500,
         "transition-left-to-right": true
       },
       "modules": [
-        "wireplumber",
+        "wireplumber#sink",
+        "wireplumber#source"
+      ]
+    },
+    "group/lightcontrols": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true
+      },
+      "modules": [
         "backlight",
         "custom/kbdbacklight"
       ]
     },
-    "wireplumber": {
+    "wireplumber#sink": {
       "format": "{icon} {volume}",
       "format-bluetooth": "󰂰",
       "nospacing": 1,
-      "tooltip-format": "Volume : {volume}%",
+      "tooltip-format": "Speaker: {volume}%",
       "format-muted": "󰝟 {volume}",
       "format-icons": {
         "headphone": "",
@@ -46,13 +57,21 @@
       },
       "on-click": "~/.config/waybar/scripts/soundclick.sh",
       "on-click-right": "pavucontrol",
-      "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+      "on-click-middle": "~/.local/bin/switch-audio-device",
       "scroll-step": 1
+    },
+    "wireplumber#source": {
+      "node-type": "Audio/Source",
+      "format": "",
+      "format-muted": "",
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+      "tooltip-format": "Mic: {volume}%",
+      "scroll-step": 5
     },
     "backlight": {
       "format": "{icon} {percent}",
       "tooltip-format": "Backlight: {percent}%",
-      "format-icons": [""]
+      "format-icons": ["", ""]
     },
     "custom/kbdbacklight": {
       "exec": "~/.config/waybar/scripts/kbdbacklight.sh get",
@@ -183,7 +202,7 @@
       "mpris"
     ],
     "mpris": {
-      "player": "spotify",
+      "ignored-players": ["firefox"],
       "format": "{player_icon} {dynamic}",
       "format-paused": "{status_icon} {dynamic}",
       "dyanmic-len": 60,
