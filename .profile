@@ -26,7 +26,7 @@ if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH="$PATH:/home/lou/go/bin"
+export PATH="$PATH:/home/lou/go"
 export GOPATH="/home/lou/go/bin"
 
 # set PATH so it includes user's private bin if it exists

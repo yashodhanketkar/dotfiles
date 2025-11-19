@@ -93,7 +93,7 @@ sys_info() {
 }
 
 clipboard() {
-  cliphist list | wofi --dmenu | cliphist decode | wl-copy
+  cliphist list | wofi --dmenu -W 45% | cliphist decode | wl-copy
 }
 
 "$@"
