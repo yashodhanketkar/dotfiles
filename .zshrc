@@ -22,6 +22,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   per-directory-history
+  nvm
 )
 
 source $ZSH/oh-my-zsh.sh
