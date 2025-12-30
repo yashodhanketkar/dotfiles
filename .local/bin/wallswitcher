@@ -83,3 +83,5 @@ if [[ -z $(pidof swaync) ]]; then
   hyprctl -q dispatch exec swaync
 fi
 swaync-client -rs
+
+kill -SIGUSR1 $(pgrep kitty)
