@@ -12,6 +12,7 @@
 .config/wofi/style.css
 .config/hypr/colors.conf
 .config/tmux/colors.conf
+.config/kitty/kittytheme.conf
 
 # private
 .config/wezterm/lua/private/

@@ -16,31 +16,21 @@ if [ -n "$BASH_VERSION" ]; then
 	fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-	PATH="$HOME/bin:$PATH"
-fi
+GOPATH="$HOME/go"
+ANDROID_SDK_ROOT="$HOME/Android/Sdk/"
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
-	PATH="$HOME/.local/bin:$PATH"
-fi
+JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+CHROME_EXECUTABLE="/usr/bin/chromium"
 
-export PATH="$PATH:/home/lou/go"
-export GOPATH="/home/lou/go/bin"
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.cargo/bin" ]; then
-	PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-# # set PATH so it includes user's private bin if it exists
-# if [ -d "/usr/local/texlive/2024/bin/x86_64-linux" ] then
-#   PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
-# fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "/usr/local/texlive/2024/bin/x86_64-linux" ]; then
-	PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
-fi
-
+PATH="$HOME/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
+PATH="/home/lou/.dotnet/tools:$PATH"
+PATH="/home/lou/.config/composer/vendor/bin/:$PATH"
+PATH="/home/lou/develop/flutter/bin/:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$GOPATH/bin:$PATH"
+PATH="$JAVA_HOME/bin:$PATH"
+PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
+PATH="$ANDROID_SDK_ROOT/emulator:$PATH"
+PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH"

@@ -15,7 +15,7 @@ if [[ -z "$SELECTED" ]]; then
 fi
 
 # Exit if sink is already selected
-if [[ "$SELECTED" == "CURR_SINK" ]]; then
+if [[ "$SELECTED" == "$CURR_SINK" ]]; then
   notify-send --hint=int:transient:1 "Selected already active output" "No changes made. Current default output is\n$CURR_SINK"
   exit 0
 fi

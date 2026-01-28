@@ -4,6 +4,22 @@
   outline: none;
 }
 
+list,
+listview,
+row,
+listview row,
+notification,
+notification-group,
+listview row:selected,
+listview row:hover,
+listview row:focus,
+listview row:active {
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  outline: none;
+}
+
 .notification-row {
   all: unset;
   outline: none;
@@ -331,13 +347,13 @@
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 12px;
-  background: @red;
+  background: @green;
   border: 1px solid @light_01;
   box-shadow: none;
 }
 
 .widget-dnd > switch:checked {
-  background: @green;
+  background: @red;
 }
 
 .widget-dnd > switch slider {

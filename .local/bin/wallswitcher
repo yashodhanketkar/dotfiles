@@ -3,12 +3,15 @@
 # variable initialization
 CACHEPATH="$HOME/.config/hypr/hyprpaper.conf"
 WALLPAPER_BASE="$HOME/Pictures/wallpapers/"
-AVAIL_WALLPAPERS=$(ls "$HOME/Pictures/wallpapers")
-MONITORS=($(hyprctl monitors | grep Monitor | awk '{ print $2; }'))
+AVAIL_WALLPAPERS=$(find "$WALLPAPER_BASE" -maxdepth 1 -type f -printf "%f\n")
+# MONITORS=($(hyprctl monitors | grep Monitor | awk '{ print $2; }'))
+MONITORS=()
+mapfile -t MONITORS < <(hyprctl -j monitors | jq -r '.[].name')
 NM=${#MONITORS[@]} # number of monitors
 declare -a WALLPAPERS
 NW=0 # number of wallpapers
 i=0
+
 
 # wallpaper listing and selection prompt
 wofi_cmd() {
@@ -21,67 +24,76 @@ select_more_prompt() {
 }
 
 # wallpaper selection loop
-while true; do
-  # appends wallpaper to selection array
-  WALLPAPERS+=($(wofi_cmd))
+wallpaper_prompt() {
+  while true; do
+    # appends wallpaper to selection array
+    WALLPAPERS+=($(wofi_cmd))
 
-  # handles early exit
-  if [[ ${#WALLPAPERS[@]} -eq 0 ]]; then
-    echo "Ok" | wofi -d -p "Exiting without making any changes..."
-    exit 0
+    # handles early exit
+    if [[ ${#WALLPAPERS[@]} -eq 0 ]]; then
+      echo "Ok" | wofi -d -p "Exiting without making any changes..."
+      exit 0
+    fi
+
+    # keep track of number of wallpapers
+    i=$((i+1))
+
+    # break loop if number of wallpapers is equal to number of monitors
+    # this limits wallpaper to the number of monitors
+    if [[ $NM -le $i ]]; then
+      break
+    fi
+
+    # confirmation prompt for more wallpapers
+    if [[ "$(select_more_prompt)" == "No" ]]; then
+      break
+    fi
+  done
+}
+
+apply_wallpapers() {
+  wallpaper_prompt
+
+  # update number of wallpapers wrt wallpapers array
+  NW=${#WALLPAPERS[@]}
+
+  # reset loaded hyprpaper
+  rm "$CACHEPATH"
+
+  echo -e "splash = false\nipc = true" >> "$CACHEPATH"
+
+  # applying wallpapers
+  for idx in "${!MONITORS[@]}"; do
+    walIdx=$((( idx + 1 ) % NW))
+    echo -e "
+wallpaper {
+  monitor = ${MONITORS[$idx]}
+  path = "$WALLPAPER_BASE${WALLPAPERS[$walIdx]}"
+}\n" >> "$CACHEPATH"
+  done
+
+  killall hyprpaper
+  hyprctl dispatch exec hyprpaper
+
+  # create theme pallete
+  wallust run -q -u "$WALLPAPER_BASE${WALLPAPERS[0]}"
+
+  # restart waybar (to apply theme to calendar)
+  if [[ -z $(pidof waybar) ]]; then
+    hyprctl -q dispatch exec waybar
+  else
+    pkill waybar & hyprctl -q dispatch exec waybar
   fi
 
-  # keep track of number of wallpapers
-  i=$((i+1))
+  tmux source-file ~/.config/tmux/colors.conf
 
-  # break loop if number of wallpapers is equal to number of monitors
-  # this limits wallpaper to the number of monitors
-  if [[ $NM -le $i ]]; then
-    break
+  # start swaync if not running
+  if [[ -z $(pidof swaync) ]]; then
+    hyprctl -q dispatch exec swaync
   fi
+  swaync-client -rs
 
-  # confirmation prompt for more wallpapers
-  if [[ "$(select_more_prompt)" == "No" ]]; then
-    break
-  fi
-done
+  kill -SIGUSR1 $(pgrep kitty)
+}
 
-# update number of wallpapers wrt wallpapers array
-NW=${#WALLPAPERS[@]}
-
-# reset loaded hyprpaper
-hyprctl -q hyprpaper unload all
-rm "$CACHEPATH"
-
-# preloading wallpapers
-for WALLPAPER in "${WALLPAPERS[@]}"; do
-  hyprctl -q hyprpaper preload "$WALLPAPER_BASE$WALLPAPER"
-  echo "preload = $WALLPAPER_BASE$WALLPAPER" >> "$CACHEPATH"
-done
-
-# applying wallpapers
-for idx in "${!MONITORS[@]}"; do
-  walIdx=$((( idx + 1 ) % NW))
-  hyprctl -q hyprpaper wallpaper ${MONITORS[$idx]},"$WALLPAPER_BASE${WALLPAPERS[$walIdx]}"
-  echo "wallpaper = ${MONITORS[$idx]}, $WALLPAPER_BASE${WALLPAPERS[$walIdx]}" >> "$CACHEPATH"
-done
-
-# create theme pallete
-wallust run -q -u "$WALLPAPER_BASE$WALLPAPER"
-
-# restart waybar (to apply theme to calendar)
-if [[ -z $(pidof waybar) ]]; then
-  hyprctl -q dispatch exec waybar
-else
-  pkill waybar & hyprctl -q dispatch exec waybar
-fi
-
-tmux source-file ~/.config/tmux/colors.conf
-
-# start swaync if not running
-if [[ -z $(pidof swaync) ]]; then
-  hyprctl -q dispatch exec swaync
-fi
-swaync-client -rs
-
-kill -SIGUSR1 $(pgrep kitty)
+apply_wallpapers
