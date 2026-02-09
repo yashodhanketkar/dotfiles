@@ -1,107 +1,113 @@
-@theme "/dev/null"
-@theme "./colors.rasi"
+@import "colors.rasi"
 
 configuration {
+  font: "JetBrainsMono Nerd Font 10";
   show-icons: true;
-  display-drun: "Apps:";
-  display-window: "W";
-}
-
-* {
-  font: "JetBrainsMono Nerd Font 12";
-  background-color: transparent;
-  text-color: @light;
-  margin: 0;
-  padding: 0;
-  spacing: 0;
+  icon-theme: "Adwaita";
+  display-drun: "Launch";
+  display-window: "Switch";
+  drun-display-format: "{name}";
+  disable-history: false;
+  fullscreen: false;
+  hide-scrollbar: true;
+  sidebar-mode: false;
 }
 
 window {
-  location: north;
-  width: 45%;
-  padding: 8px; 
-  background-color: @dark03;
+  transparency: "screenshot";
+  background-color: @background;
+  text-color: @foreground;
+  border: 0;
+  border-color: @border;
+  border-radius: 0.25em;
+  width: 40%;
+  location: center;
+  x-offset: 0;
+  y-offset: 0;
+}
 
-  transparency: "background";
-
-  y-offset: 48px;
-  border: 1px;
+mainbox {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  border-color: @accent;
   children: [ inputbar, listview ];
+  spacing: 0.5em;
+  padding: 0.5em;
 }
 
 inputbar {
-  spacing: 8px;
-  padding: 8px;
-
-  border: 1px;
-  background-color: @selection05;
-}
-
-prompt,
-entry,
-element-icon,
-element-text {
-  vertical-align: 0.5;
+  children: [ prompt, entry ];
+  background-color: @highlight;
+  text-color: @foreground;
+  expand: false;
+  border: 0;
+  border-radius: 0.25em;
+  border-color: @accent;
+  margin: 0;
+  padding: 0.5em;
 }
 
 prompt {
-  text-color: @comment;
+  enabled: true;
+  padding: 0 0.5em 0 0;
+  text-color: @foreground;
+  font: "JetBrainsMono Nerd Font 12";
 }
 
-textbox {
-  padding: 8px;
-  background-color: @selection05;
+entry {
+  text-color: @foreground;
+  placeholder-color: @foreground;
+  expand: true;
+  horizontal-align: 0;
+  placeholder: "Search";
+  padding: 0;
+  blink: true;
+  font: "JetBrainsMono Nerd Font 12";
 }
 
 listview {
-  padding: 4px 0;
-  lines: 8;
-  columns: 1;
-
-  fixed-height: false;
+  background-color: transparent;
+  columns: 5;
+  lines: 3;
+  spacing: 0;
+  layout: vertical;
+  fixed-height: true;
+  fixed-columns: true;
+  scrollbar: false;
+  cycle: false;
+  dynamic: true;
+  border: 0;
 }
 
 element {
-  padding: 8px;
-  spacing: 8px;
-  orientation: horizontal;
-  children: [ element-icon, element-text ];
-  border-radius: 4px;
-}
-
-element normal normal {
-  text-color: @light;
-}
-
-element normal urgent {
-  text-color: @red;
-}
-
-element normal active {
-  text-color: @accent;
-}
-
-element alternate active {
-  text-color: @accent;
-}
-
-element selected {
-  text-color: @light;
-}
-
-element selected normal,
-element selected active {
-  background-color: @accent;
-}
-
-element selected urgent {
-  background-color: @red;
+  background-color: transparent;
+  text-color: @foreground;
+  orientation: vertical;
+  border-color: @accent;
+  border: 0;
+  border-radius: 0.25em;
+  padding: 1em 0;
 }
 
 element-icon {
-  size: 0.8em;
+  size: 4em;
+  border: 0;
 }
 
 element-text {
-  text-color: inherit;
+  expand: true;
+  horizontal-align: 0.5;
+  vertical-align: 0.5;
+  margin: 0.25em 0.25em -0.25em 0.25em;
+}
+
+element alternate normal,
+element normal normal {
+  background-color: transparent;
+}
+
+element selected normal {
+  background-color: @accent;
+  text-color: @foreground;
 }

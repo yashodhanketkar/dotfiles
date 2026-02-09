@@ -26,21 +26,17 @@ ZSH_THEME="robbyrussell"
 plugins=(
   fzf
   z
-  zsh-autosuggestions
-  zsh-syntax-highlighting
   per-directory-history
   nvm
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
+
+zstyle ':omz:plugins:nvm' lazy yes
 
 source $ZSH/oh-my-zsh.sh
 source /etc/environment
 source ~/.profile
-
-[[ -s $HOME/.nvm/nvm.sh ]] && source "$HOME/.nvm/nvm.sh"
-# . "$HOME/.cargo/env"
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/SW/flutter/bin/"
-export FZF_BASE=/usr/bin/fzf
 
 # custom exports
 export LC_ALL=en_US.UTF-8
@@ -60,3 +56,10 @@ bindkey -s ^v "cliphist list | fzf | cliphist decode | wl-copy\n"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Load Angular CLI autocompletion.
+if [[ ! -f ~/.cache/ng-completion.zsh ]]; then
+  mkdir -p ~/.cache
+  ng completion script > ~/.cache/ng-completion.zsh
+fi
+source ~/.cache/ng-completion.zsh

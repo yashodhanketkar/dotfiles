@@ -16,6 +16,8 @@ if [ -n "$BASH_VERSION" ]; then
 	fi
 fi
 
+FZF_BASE=/usr/bin/fzf
+
 GOPATH="$HOME/go"
 ANDROID_SDK_ROOT="$HOME/Android/Sdk/"
 

@@ -54,3 +54,4 @@ wezterm = { template = 'wezterm', target = '~/.config/wezterm/lua/private/gradie
 hypr = { template = 'hypr', target = '~/.config/hypr/confs/colors.conf' }
 tmux = { template = 'tmux', target = '~/dotfiles/.config/tmux/colors.conf' }
 kitty = { template = 'kitty', target = '~/.config/kitty/kittytheme.conf' }
+rofi = { template = 'rofi', target = '~/.config/rofi/colors.rasi' }

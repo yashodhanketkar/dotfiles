@@ -13,6 +13,7 @@
 .config/hypr/colors.conf
 .config/tmux/colors.conf
 .config/kitty/kittytheme.conf
+.config/rofi/colors.rasi
 
 # private
 .config/wezterm/lua/private/
