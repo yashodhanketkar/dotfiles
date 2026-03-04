@@ -1,25 +1,44 @@
 #!/usr/bin/env bash
 
+# get search dirs
+TSC="$HOME/.config/tmux-sessionizer"
+if [ ! -f "$TSC" ]; then
+    echo "Error: config error
+tmux-sessionizer config file not found
+Please create ~/.config/tmux-sessionizer and add your search dirs
+
+For example:
+adding following lines to ~/.config/tmux-sessionizer
+Desktop
+Documents
+
+will search for tmux session in Desktop and Documents direct subdirectories
+"
+    exit 0
+fi
+
+mapfile -t SEARCH_DIRS < <(grep -vE '^\s*#|^\s*$' "$TSC")
+
 if [[ $# -eq 1 ]]; then
-	SELECTED=$1
+    SELECTED=$1
 else
-	SELECTED=$(find ~/dotfiles/ ~/Projects/ ~/Projects/largemono/ ~/writing/ ~/private/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    SELECTED=$(find "${SEARCH_DIRS[@]}" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
 fi
 
 if [[ -z $SELECTED ]]; then
-	exit 0
+    exit 0
 fi
 
 SELECTED_NAME=$(basename "$SELECTED" | tr . _)
 TMUX_RUNNING=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then
-	tmux new-session -s $SELECTED_NAME -c $SELECTED
-	exit 0
+    tmux new-session -s $SELECTED_NAME -c $SELECTED
+    exit 0
 fi
 
 if ! tmux has-session -t=$SELECTED_NAME 2>/dev/null; then
-	tmux new-session -ds $SELECTED_NAME -c $SELECTED
+    tmux new-session -ds $SELECTED_NAME -c $SELECTED
 fi
 
 tmux attach -t $SELECTED_NAME

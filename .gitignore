@@ -10,7 +10,7 @@
 .config/waybar/clock.jsonc
 .config/wlogout/colors.css
 .config/wofi/style.css
-.config/hypr/colors.conf
+.config/hypr/modules/colors.conf
 .config/tmux/colors.conf
 .config/kitty/kittytheme.conf
 .config/rofi/colors.rasi

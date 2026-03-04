@@ -1,17 +1,15 @@
 @import "colors.rasi"
 
 configuration {
-  font: "JetBrainsMono Nerd Font 10";
-  show-icons: true;
-  icon-theme: "Adwaita";
-  display-drun: "Launch:";
-  display-window: "Switch:";
+  font: "JetBrainsMono Nerd Font 12";
+  show-icons: false;
   drun-display-format: "{name}";
   disable-history: false;
   fullscreen: false;
   hide-scrollbar: true;
   sidebar-mode: false;
   matching: "fuzzy";
+  case-smart: true;
 }
 
 window {
@@ -32,9 +30,8 @@ mainbox {
   border: 0;
   border-radius: 0;
   border-color: @accent;
-  children: [ listview, inputbar ];
-  spacing: 0.5em;
-  padding: 0.5em;
+  children: [ inputbar, listview ];
+  padding: 0.25em;
 }
 
 inputbar {
@@ -44,16 +41,15 @@ inputbar {
   expand: false;
   border: 0;
   border-radius: 0.25em;
-  border-color: @accent;
-  margin: 0;
   padding: 0.5em;
+  border-color: @accent;
 }
 
 prompt {
   enabled: true;
-  padding: 0 0.25em 0 0;
   text-color: @foreground;
   font: "JetBrainsMono Nerd Font 12";
+  padding: 0 0.25em 0 0;
 }
 
 entry {
@@ -62,19 +58,15 @@ entry {
   expand: true;
   horizontal-align: 0;
   placeholder: "Search";
-  padding: 0;
   blink: true;
   font: "JetBrainsMono Nerd Font 12";
 }
 
 listview {
   background-color: transparent;
-  columns: 5;
-  lines: 3;
-  spacing: 0;
+  columns: 1;
+  lines: 6;
   layout: vertical;
-  fixed-height: true;
-  fixed-columns: true;
   scrollbar: false;
   cycle: false;
   dynamic: true;
@@ -88,19 +80,20 @@ element {
   border-color: @accent;
   border: 0;
   border-radius: 0.25em;
-  padding: 1em 0;
+  padding: 0.5em;
 }
 
 element-icon {
-  size: 3em;
+  size: 0;
   border: 0;
 }
 
-element-text {
+element-text,
+element-text selected {
   expand: true;
-  horizontal-align: 0.5;
-  vertical-align: 0.5;
-  margin: 0.25em 0.25em -0.25em 0.25em;
+  font: "JetBrainsMono Nerd Font 12";
+  text-color: @foreground;
+  highlight: none;
 }
 
 element alternate normal,
@@ -110,5 +103,4 @@ element normal normal {
 
 element selected normal {
   background-color: @accent;
-  text-color: @foreground;
 }
