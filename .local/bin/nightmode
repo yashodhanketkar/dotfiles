@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if [ "$(pidof hyprsunset)" ]; then
-  killall hyprsunset
-else
-  hyprctl --quiet dispatch exec hyprsunset
-  hyprctl --quiet hyprsunset temperature 4500
-fi

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-POWERSTATE=$(bluetoothctl show | grep 'Powered' | awk '{print $2}')
+POWERSTATE=$(bluetoothctl <<< "show" | grep 'Powered' | awk '{print $2}')
 DISCOVERABLESTATE=$(bluetoothctl show | grep 'Discoverable:' | awk '{print $2}')
 
 toggle_power() {

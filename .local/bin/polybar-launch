@@ -19,17 +19,16 @@
 ###                    New bash script to launch polybars                    ###
 ################################################################################
 
-
 # kills all polybars
 killall -q polybar
 
 # Launches polybars
 for m in $(xrandr --query | grep ' connected' | cut -d' ' -f1); do
-  if [[ $m == "DP-2" ]]; then
-    polybar main &
-  elif [[ $m == "HDMI-0" ]]; then
-    polybar alt &
-  fi
+    if [[ $m == "DP-2" ]]; then
+        polybar main &
+    elif [[ $m == "HDMI-0" ]]; then
+        polybar alt &
+    fi
 done
 
 # Waits for polybars to launch

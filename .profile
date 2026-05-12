@@ -10,17 +10,23 @@
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-	# include .bashrc if it exists
-	if [ -f "$HOME/.bashrc" ]; then
-		. "$HOME/.bashrc"
-	fi
+  # include .bashrc if it exists
+  if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+  fi
 fi
+
+FZF_BASE=/usr/bin/fzf
 
 GOPATH="$HOME/go"
 ANDROID_SDK_ROOT="$HOME/Android/Sdk/"
 
-JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+ANDROID_HOME="$HOME/Android"
+ANDROID_NDK_HOME="$HOME/Android/Sdk/ndk/28.2.13676358/"
+# JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
 CHROME_EXECUTABLE="/usr/bin/chromium"
+SONAR_SCANNER_HOME="/opt/sonar-scanner"
 
 PATH="$HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
@@ -34,3 +40,7 @@ PATH="$JAVA_HOME/bin:$PATH"
 PATH="$ANDROID_SDK_ROOT/platform-tools:$PATH"
 PATH="$ANDROID_SDK_ROOT/emulator:$PATH"
 PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH"
+PATH="${SONAR_SCANNER_HOME}/bin:$PATH"
+
+XCURSOR_THEME="Bibata-Modern-Ice"
+XCURSOR_SIZE=24

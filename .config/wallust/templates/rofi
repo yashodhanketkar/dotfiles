@@ -1,0 +1,6 @@
+* {
+  background: {{ cursor }}15;
+  highlight:  {{ color7 }}30;
+  foreground: {{ foreground }};
+  accent:     {{ color2 }}85;
+}

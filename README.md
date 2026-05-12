@@ -30,92 +30,6 @@ Includes current config files
 -	wlogout
 -	custom services
 
-Directory structure
--------------------
-
-```
-home/username/
-│
-├── .local/
-│   └── bin/
-│       ├── activate-pointer
-│       ├── browser
-│       ├── gamemode
-│       ├── switch-audio-device
-│       ├── tmux-sessionizer
-│       └── wallswitcher
-│
-├──── .config/
-│     ├── colorsPallete/
-│     │   └── colors.css
-│     ├── hypr/
-│     │   ├── scripts/
-│     │   │   └── hyprscripts.sh
-│     │   ├── confs/
-│     │   │   ├── colors.conf
-│     │   │   ├── inputs.conf
-│     │   │   ├── keybinds.conf
-│     │   │   ├── looks.conf
-│     │   │   ├── personal.conf
-│     │   │   └── rules.conf
-│     │   ├── hypridle.conf
-│     │   ├── hyprland.conf
-│     │   ├── hyprlock.conf
-│     │   ├── hyprpaper.conf
-│     │   └── hyprsunset.conf
-│     ├── i3/
-│     │   ├── config
-│     │   └── i3status.config
-│     ├── polybar/
-│     │   └── config.ini
-│     ├── rofi/
-│     │   └── config.rasi
-│     ├── swaync/
-│     │   ├── config.json
-│     │   ├── configSchema.json
-│     │   └── style.css
-│     ├── systemd/
-│     │   └── user/
-│     │       ├── service-weather.service
-│     │       └── service-weather.timer
-│     ├── tmux/
-│     │   └── tmux.conf
-│     ├── wallust/
-│     │   ├── scripts/
-│     │   │   ├── waybar
-│     │   │   ├── waybarClock
-│     │   │   └── wofi
-│     │   └── style.css
-│     ├── waybar/
-│     │   ├── scripts/
-│     │   │   ├── kbdbacklight.sh
-│     │   │   └── powermenu.sh
-│     │   ├── config.jsonc
-│     │   └── style.css
-│     ├── wezterm/
-│     │   ├── lua 
-│     │   │   └── ui.lua
-│     │   └── config.rasi
-│     ├── wlogout/
-│     │   ├── icons/ 
-│     │   ├── layout 
-│     │   └── style.css
-│     └── wofi/
-│         ├── config
-│         └── style.css
-│
-├──── Server/
-│     └── config
-│         └── docker-compose.yml
-│
-├── .bashrc
-├── .gitconfig
-├── .profile
-├── .p10k.zsh
-├── .xbindkeysrc
-└── .zshrc
-```
-
 Scripts
 -------
 
@@ -125,25 +39,9 @@ Scripts
 
 I3-wm script to turn off mouse acceleration and set-up touchpad.
 
-#### browser
-
-Open a browser with a given URL, saved bookmarks or search with search engine. Currently saved browser is firefox, search engine is duckduckgo.
-
-#### gamemode
-
-Toggle gamemode on/off (hyprland).
-
-#### switch-audio-device
-
-Switch audio sinks between headphones, speakers, bluetooth, HDMI audio, and many more outputs sequentially.
-
 #### tmux-sessionizer
 
 Launch/attach tmux with as session name based on project/directory.
-
-#### wallswitcher
-
-Switch wallpapers and run wallust. Apply generated styles to respective programs.
 
 ### Dependent
 
@@ -161,6 +59,13 @@ get_music(){}
 
 # get system information
 sys_info(){}
+
+# open clipboard
+clipboard(){}
+
+# get special workspaces
+get_special(){}
+
 ```
 
 #### waybar/scripts/bluetooth.sh
@@ -191,6 +96,22 @@ set(){}
 # toggle default sink mute status
 # sink is muted ? pause the player
 #               : play command
+```
+
+#### swaync/scripts/swaync.sh
+
+```sh
+# toggle default sink mute
+toggle_mute_status(){}
+
+# get default sink mute status
+get_mute_status(){}
+
+# toggle wifi on/off
+toggle_wifi_status(){}
+
+# get wifi status
+get_wifi_status(){}
 ```
 
 License

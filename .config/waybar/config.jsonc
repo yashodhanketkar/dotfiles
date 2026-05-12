@@ -71,7 +71,8 @@
     "backlight": {
       "format": "{icon} {percent}",
       "tooltip-format": "Backlight: {percent}%",
-      "format-icons": ["", ""]
+      "format-icons": ["", ""],
+      "on-click": "louarch osmode night"
     },
     "custom/kbdbacklight": {
       "exec": "~/.config/waybar/scripts/kbdbacklight.sh get",
@@ -140,20 +141,12 @@
       "format": "{icon}",
       "tooltip-format": "Lock Screen",
       "format-icons": [""],
-      "on-click": "hyprlock --immediate"
+      "on-click": "hyprlock --immediate-render"
     },
     "custom/power": {
       "format": "󰤆",
       "tooltip": false,
       "on-click": "wlogout"
-    },
-    "wlr/taskbar": {
-      "format": "{icon}",
-      "on-click": "activate",
-      "on-click-right": "fullscreen",
-      "icon-theme": "WhiteSur",
-      "icon-size": 25,
-      "tooltip-format": "{title}"
     },
     "battery": {
       "format": "{capacity}% {icon}",
