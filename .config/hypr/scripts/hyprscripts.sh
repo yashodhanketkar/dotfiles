@@ -101,7 +101,14 @@ sys_info() {
 }
 
 clipboard() {
-    cliphist list | wofi --dmenu -W 45% | cliphist decode | wl-copy
+    cliphist list | rofi -dmenu -p 'Clipboard: ' -config ~/.config/rofi/prompt.rasi | cliphist decode | wl-copy
+}
+
+get_special() {
+    readarray -t WORKSPACES < <(hyprctl workspaces -j | jq -r '.[] | select(.name | startswith("special")) | .name')
+    SELECTED=$(printf "%s\n" "${WORKSPACES[@]}" | rofi -dmenu -p 'Special Workspaces' -config ~/.config/rofi/prompt.rasi)
+
+    hyprctl dispatch workspace $SELECTED
 }
 
 "$@"

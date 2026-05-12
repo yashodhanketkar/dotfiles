@@ -137,3 +137,5 @@ alias templ="/home/lou/go/bin/templ"
 PS1='[\u@\h \W]\$ '
 
 [[ -f ~/.cache/louarch/completion.bash ]] && source ~/.cache/louarch/completion.bash
+
+complete -C /usr/bin/terraform terraform

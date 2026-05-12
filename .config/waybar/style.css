@@ -75,11 +75,10 @@ tooltip label {
   padding: 0.5rem;
 }
 
-#wireplumber.muted {
-  background: @accent_14;
-  color: @accent_01;
-}
-
+#custom-notifications.dnd-notification,
+#custom-notifications.dnd-none,
+#wireplumber.muted,
+#custom-kbdbacklight.off,
 #bluetooth.off {
   background: @accent_14;
   color: @accent_01;
@@ -94,17 +93,6 @@ tooltip label {
 #battery.urgent,
 #battery.critical {
   background: @danger;
-}
-
-#custom-kbdbacklight.off {
-  background: @accent_14;
-  color: @accent_01;
-}
-
-#custom-notifications.dnd-notification,
-#custom-notifications.dnd-none {
-  background: @accent_14;
-  color: @accent_01;
 }
 
 /* spotify colors */
@@ -136,6 +124,8 @@ tooltip label {
 }
 
 #mpris.playing:hover {
+  color: @spotify-black;
+  background: @spotify-green;
   box-shadow:
   inset -1px -3px @spotify-green-opaque,
   inset -1px 0px @spotify-green-opaque;
@@ -150,6 +140,8 @@ tooltip label {
 }
 
 #mpris.paused:hover {
+  color: @spotify-black;
+  background: @spotify-white;
   box-shadow:
   inset -1px -3px @spotify-white-opaque,
   inset -1px 0px @spotify-white-opaque;
@@ -180,4 +172,8 @@ tooltip label {
 #submap {
   padding: 0.25rem;
   margin: 0.25rem;
+}
+
+#taskbar {
+  padding: 0rem;
 }

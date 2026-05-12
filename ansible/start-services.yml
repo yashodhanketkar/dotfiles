@@ -1,0 +1,16 @@
+---
+- name: Stop system services
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Ensure specified services are stopped
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started
+      loop:
+        - containerd.service
+        - docker.socket
+        - postgresql.service
+        - calibre-server.service
+        - httpd.service
+        - php-fpm.service

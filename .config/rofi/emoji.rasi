@@ -1,0 +1,107 @@
+@import "colors.rasi"
+
+configuration {
+  font: "JetBrainsMono Nerd Font 12";
+  show-icons: false;
+  display-emoji: "Emoji:";
+  drun-display-format: "{name}";
+  disable-history: false;
+  fullscreen: false;
+  hide-scrollbar: true;
+  sidebar-mode: false;
+  matching: "normal";
+  case-smart: true;
+}
+
+window {
+  transparency: "screenshot";
+  background-color: @background;
+  text-color: @foreground;
+  border: 0;
+  border-color: @accent;
+  border-radius: 0.25em;
+  width: 40%;
+  location: center;
+  x-offset: 0;
+  y-offset: 0;
+}
+
+mainbox {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  border-color: @accent;
+  children: [ inputbar, listview ];
+  padding: 0.25em;
+}
+
+inputbar {
+  children: [ prompt, entry ];
+  background-color: @highlight;
+  text-color: @foreground;
+  expand: false;
+  border: 0;
+  border-radius: 0.25em;
+  padding: 0.5em;
+  border-color: @accent;
+}
+
+prompt {
+  enabled: true;
+  text-color: @foreground;
+  font: "JetBrainsMono Nerd Font 12";
+  padding: 0 0.25em 0 0;
+}
+
+entry {
+  text-color: @foreground;
+  placeholder-color: @foreground;
+  expand: true;
+  horizontal-align: 0;
+  placeholder: "Search";
+  blink: true;
+  font: "JetBrainsMono Nerd Font 12";
+}
+
+listview {
+  background-color: transparent;
+  columns: 1;
+  lines: 6;
+  layout: vertical;
+  scrollbar: false;
+  cycle: false;
+  dynamic: true;
+  border: 0;
+}
+
+element {
+  background-color: transparent;
+  text-color: @foreground;
+  orientation: vertical;
+  border-color: @accent;
+  border: 0;
+  border-radius: 0.25em;
+  padding: 0.5em;
+}
+
+element-icon {
+  size: 0;
+  border: 0;
+}
+
+element-text,
+element-text selected {
+  expand: true;
+  font: "JetBrainsMono Nerd Font 12";
+  text-color: @foreground;
+  highlight: none;
+}
+
+element alternate normal,
+element normal normal {
+  background-color: transparent;
+}
+
+element selected normal {
+  background-color: @accent;
+}

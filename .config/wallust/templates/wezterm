@@ -12,9 +12,9 @@ return {
 	colors = {
 		selection_fg = "{{ color1 | complementary | lighten(0.5) }}",
 		selection_bg = "{{ color1 | darken(0.5) }}",
-		foreground = "{{ cursor }}",
+		foreground = "{{ foreground }}",
 		cursor_bg = "{{ cursor }}",
-		cursor_fg = "{{ foreground }}",
+		cursor_fg = "{{ cursor }}",
 		scrollbar_thumb = "{{ cursor }}",
 		split = "{{ color1 }}",
 		compose_cursor = "{{ color10 }}",

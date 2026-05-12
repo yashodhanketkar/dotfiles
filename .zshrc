@@ -42,30 +42,21 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export DISPLAY=:0
 
-# custom alias
-alias py="python3"
-alias lock="i3lock -i /home/lou/Pictures/lockalt.png -t"
-alias vim="nvim"
-alias lvim="NVIM_APPNAME=lvim nvim"
-alias code="~/vscode/bin/code"
-
-# custom keybinds
-bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^v "cliphist list | fzf | cliphist decode | wl-copy\n"
-bindkey -s ^e "nvim .\n"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Load Angular CLI autocompletion.
-if [[ ! -f ~/.cache/ng-completion.zsh ]]; then
-  mkdir -p ~/.cache
-  ng completion script >~/.cache/ng-completion.zsh
-fi
-source ~/.cache/ng-completion.zsh
+# custom keybinds
+bindkey -s ^f "louarch tmux attach\n"
+bindkey -s ^k "louarch tmux kill\n"
+bindkey -s ^v "cliphist list | fzf | cliphist decode | wl-copy\n"
+bindkey -s ^e "nvim .\n"
 
-if [[ ! -f ~/.cache/louarch/completion.zsh ]]; then
-  mkdir -p ~/.cache/louarch
-  louarch completions zsh --silent
-fi
-source ~/.cache/louarch/completion.zsh
+# custom alias
+alias py="python3"
+alias lock="i3lock -i /home/lou/Pictures/lockalt.png -t"
+alias code="~/develop/vscode/bin/code"
+alias lvim="NVIM_APPNAME=lvim nvim"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+source $HOME/.local/bin/completions
