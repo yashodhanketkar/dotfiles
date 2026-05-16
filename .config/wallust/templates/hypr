@@ -1,2 +1,12 @@
-$gradActive = rgba({{ cursor | rgb }},75) rgba({{ foreground | rgb }},75) 45deg
-$gradInactive = rgba({{ color1 | rgb }},75) rgba({{ color4 | rgb }},75) 45deg
+local M = {}
+
+M.gradActive = {
+	angle = 45,
+	colors = { "rgba({{ cursor | rgb }},75)", "rgba({{ foreground | rgb }},75)" },
+}
+M.gradInactive = {
+	angle = 45,
+	colors = { "rgba({{ color1 | rgb }},75)", "rgba({{ color4 | rgb }},75)" },
+}
+
+return M

@@ -1,0 +1,4 @@
+require("hyprland.startup")
+require("hyprland.personal")
+require("hyprland.keybinds")
+require("hyprland.rules")
