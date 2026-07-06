@@ -1,3 +1,5 @@
+local utils = require("hyprland.utils")
+
 --- Handles workspace movements and focus
 ---
 ---@param key string
@@ -10,6 +12,26 @@ local function movements(key, dir, target)
 	hl.bind("ALT + SHIFT + " .. key, hl.dsp.window.move({ [target] = dir }), { description = "Move window to " .. dir })
 	hl.bind("ALT + CTRL + SHIFT + " .. key, hl.dsp.window.move({ [target] = dir, follow = false }), { description = "Move window to " .. dir .. " silently" })
 	-- stylua: ignore end
+end
+
+--- Handles DPMS state
+---
+--- togle DPMS state based on current state
+--- `enable` in case other misc config fails
+local function dpms_toggle()
+	local monitors = hl.get_monitors()
+	local state = false -- default to off
+
+	for _, monitor in ipairs(monitors) do
+		if monitor.dpms_status == true then
+			state = true
+		end
+	end
+
+	-- handle offchance misfire due to key release
+	hl.timer(function()
+		hl.dispatch(hl.dsp.dpms({ action = state and "disable" or "enable" }))
+	end, { timeout = 500, type = "oneshot" })
 end
 
 -- handle window focus and movement via hjkl keys
@@ -40,3 +62,10 @@ hl.bind("ALT + mouse:273", hl.dsp.window.resize(), { description = "Resize windo
 hl.bind("ALT + mouse:272", hl.dsp.window.drag(), { description = "Drag window" })
 hl.bind("ALT + mouse_down", hl.dsp.focus({ workspace = "e+1" }), { description = "Move window to next workspace" })
 hl.bind("ALT + mouse_up", hl.dsp.focus({ workspace = "e-1" }), { description = "Move window to next workspace" })
+
+--- Handles clockwise rotation of the active monitor
+hl.bind("SUPER + J", utils.transform_clockwise, { description = "Rotate active/focused monitor clockwise" })
+hl.bind("SUPER + K", utils.transform_anti_clockwise, { description = "Rotate active/focused monitor anticlockwise" })
+
+-- dpms toggle
+hl.bind("SUPER + SHIFT + M", dpms_toggle, { description = "Toggle DPMS state" })

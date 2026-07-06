@@ -10,6 +10,7 @@ hl.window_rule({ match = { class = "^(steam)$" }, workspace = "special:Steam" })
 -- preferences
 hl.window_rule({ match = { class = "^(kitty)$" }, tile = true })
 hl.window_rule({ match = { title = "^(Picture-in-Picture)$" }, float = true })
+hl.window_rule({ match = { class = "^(org.louarch.gui)$" }, float = true })
 
 hl.window_rule({
 	name = "special-workspaces",
