@@ -1,7 +1,10 @@
+local utils = require("hyprland.utils")
+
 -- handle monitors configuration
 hl.monitor({
-	output = "eDP-1",
+	output = utils.INTERNAL_DISPLAY,
 	mode = "1920x1080@120",
+	position = "0x0",
 	scale = 1,
 	supports_hdr = false,
 	transform = 0,

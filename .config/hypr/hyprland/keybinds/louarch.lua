@@ -18,6 +18,7 @@ local key_binds = {
 	-- handle wallpapers
 	{ keys = "SUPER + W", cmd = "louarch wallpaper select", desc = "Select wallpaper" },
 	{ keys = "SUPER + SHIFT + W", cmd = "louarch wallpaper random", desc = "Select random wallpaper" },
+	{ keys = "SUPER + I", cmd = "louarch config keybinds", desc = "Show keybinds" },
 }
 
 utils.apply_all(key_binds)

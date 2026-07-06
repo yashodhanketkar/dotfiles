@@ -56,17 +56,19 @@ get_battery() {
 get_music() {
     # playerctl base command
     # ignores firefox media
-    PCCMD="playerctl --ignore-player firefox"
+    if playerctl metadata --format "{{ playerName }}" | grep -q "firefox"; then
+        exit 0
+    fi
 
     if ! playerctl status &>/dev/null; then
         echo ""
         exit 0
     fi
 
-    TITLE=$($PCCMD metadata --format '{{title}}')
-    ARTIST=$($PCCMD metadata --format '{{artist}}')
-    TIME=$($PCCMD metadata --format "{{ duration(position) }} / {{ duration(mpris:length) }} (-{{ duration(mpris:length - position) }})")
-    STATUS_TEXT=$($PCCMD status)
+    TITLE=$(playerctl metadata --format '{{title}}')
+    ARTIST=$(playerctl metadata --format '{{artist}}')
+    TIME=$(playerctl metadata --format "{{ duration(position) }} / {{ duration(mpris:length) }} (-{{ duration(mpris:length - position) }})")
+    STATUS_TEXT=$(playerctl status)
 
     case $STATUS_TEXT in
     Playing)

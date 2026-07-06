@@ -9,10 +9,12 @@
 }
 
 window#waybar {
-  background-color: transparent; 
+  background-color: transparent;
 }
 
-.main .modules-left, .main .modules-center, .main .modules-right {
+.main .modules-left,
+.main .modules-center,
+.main .modules-right {
   background-color: transparent;
   color: @foreground;
   border-radius: 0.5rem;
@@ -34,7 +36,7 @@ window#waybar {
 .main .module:hover {
   border-radius: 0.5rem;
   box-shadow: inset -2px -2px @accent_08;
-  transition: all 0.1s cubic-bezier(1,.51,.82,1.44);
+  transition: all 0.1s cubic-bezier(1, .51, .82, 1.44);
 }
 
 #workspaces {
@@ -89,9 +91,18 @@ tooltip label {
   color: @accent_02;
 }
 
+#battery.charging {
+  background: green;
+}
+
+#battery.charging.warning {
+  background: orange;
+}
+
 #battery.warning,
 #battery.urgent,
 #battery.critical {
+  color: white;
   background: @danger;
 }
 
@@ -113,38 +124,38 @@ tooltip label {
   margin: 0px;
   padding: 1rem 0.25rem;
 
-  transition: all 0.25s cubic-bezier(1,.51,.82,1.44);
+  transition: all 0.25s cubic-bezier(1, .51, .82, 1.44);
 }
 
 #mpris.playing {
   color: @spotify-green;
   box-shadow:
-  inset -1px 3px @spotify-green-opaque,
-  inset -1px 0px @spotify-green-opaque;
+    inset -1px 3px @spotify-green-opaque,
+    inset -1px 0px @spotify-green-opaque;
 }
 
 #mpris.playing:hover {
   color: @spotify-black;
   background: @spotify-green;
   box-shadow:
-  inset -1px -3px @spotify-green-opaque,
-  inset -1px 0px @spotify-green-opaque;
+    inset -1px -3px @spotify-green-opaque,
+    inset -1px 0px @spotify-green-opaque;
 }
 
 #mpris.paused {
   color: @spotify-white;
   background: @spotify-black-opaque;
   box-shadow:
-  inset -1px 3px @spotify-white-opaque,
-  inset -1px 0px @spotify-white-opaque;
+    inset -1px 3px @spotify-white-opaque,
+    inset -1px 0px @spotify-white-opaque;
 }
 
 #mpris.paused:hover {
   color: @spotify-black;
   background: @spotify-white;
   box-shadow:
-  inset -1px -3px @spotify-white-opaque,
-  inset -1px 0px @spotify-white-opaque;
+    inset -1px -3px @spotify-white-opaque,
+    inset -1px 0px @spotify-white-opaque;
 }
 
 .bottom .modules-center {

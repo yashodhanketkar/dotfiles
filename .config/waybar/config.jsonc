@@ -8,6 +8,7 @@
     "height": 34,
 
     "modules-left": [
+      "custom/louarch",
       "group/soundcontrols",
       "group/lightcontrols",
       "group/connections"
@@ -44,6 +45,11 @@
         "backlight",
         "custom/kbdbacklight"
       ]
+    },
+    "custom/louarch": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "louarch-gui"
     },
     "wireplumber#sink": {
       "format": "{icon} {volume}",
@@ -109,7 +115,6 @@
       "hyprland/workspaces"
     ],
     "hyprland/workspaces": {
-      "on-click": "activate",
       "format": "{id}"
     },
 
@@ -145,7 +150,8 @@
     },
     "custom/power": {
       "format": "󰤆",
-      "tooltip": false,
+      "tooltip": true,
+      "tooltip-format": "Power options",
       "on-click": "wlogout"
     },
     "battery": {
@@ -195,7 +201,7 @@
       "mpris"
     ],
     "mpris": {
-      "ignored-players": ["firefox"],
+      "ignored-players": ["firefox", "kdeconnect"],
       "format": "{player_icon} {dynamic}",
       "format-paused": "{status_icon} {dynamic}",
       "dyanmic-len": 60,

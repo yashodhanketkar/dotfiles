@@ -30,10 +30,17 @@ hl.config({
 		force_default_wallpaper = -1,
 		disable_hyprland_logo = false,
 		allow_session_lock_restore = true,
+
+		animate_manual_resizes = true,
+		animate_mouse_windowdragging = true,
+
+		mouse_move_enables_dpms = true,
+		key_press_enables_dpms = true,
 	},
 
 	cursor = {
 		persistent_warps = true,
+		no_hardware_cursors = 0,
 	},
 
 	decoration = require("hyprland.personal.decorations").decoration,

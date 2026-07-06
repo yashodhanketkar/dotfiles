@@ -2,6 +2,7 @@
 
 # dynamic binaries
 .local/bin
+.config/hypr/hyprland/env.lua
 
 # wallust handled
 .config/hypr/hyprpaper.conf

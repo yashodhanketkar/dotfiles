@@ -1,3 +1,5 @@
+local utils = require("hyprland.utils")
+
 ---@type KeyBinds[]
 local key_binds = {
 	-- volume keys
@@ -18,10 +20,6 @@ local key_binds = {
 	{ keys = "SHIFT + XF86AudioNext", cmd = "playerctl position 5+", desc = "Seek forward 5 seconds" },
 	{ keys = "SHIFT + XF86AudioPrev", cmd = "playerctl position 5-", desc = "Seek backward 5 seconds" },
 	{ keys = "XF86AudioStop", cmd = "playerctl stop", desc = "Stop" },
-
-	-- laptop lid
-	{ keys = "switch:on:Lid Switch", cmd = "hyprlock --immediate", desc = "Lock screen" },
-	{ keys = "switch:off:Lid Switch", cmd = "hyprlock --immediate-render", desc = "Lock screen" },
 }
 
 for _, i in pairs(key_binds) do
@@ -31,3 +29,8 @@ for _, i in pairs(key_binds) do
 		repeating = true,
 	})
 end
+
+-- stylua: ignore start
+hl.bind("switch:on:Lid Switch", utils.handle_lid_close, { locked = true, description = "Turn of internal display or lock" })
+hl.bind("switch:off:Lid Switch", utils.handle_lid_open, { locked = true, description = "Turn on internal display" })
+-- stylua: ignore end

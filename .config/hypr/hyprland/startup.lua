@@ -6,4 +6,5 @@ hl.on("hyprland.start", function()
 	-- hl.exec_cmd("awww-daemon")
 
 	hl.exec_cmd("firefox") -- personal preference to load on startup
+	hl.exec_cmd("~/.config/hypr/scripts/hyprlock-running.sh")
 end)
