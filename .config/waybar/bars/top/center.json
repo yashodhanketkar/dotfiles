@@ -1,0 +1,9 @@
+{
+  // INFO: modules
+  "modules-center": ["hyprland/workspaces"],
+
+  // INFO: built-in plugins
+  "hyprland/workspaces": {
+    "format": "{id}"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  // INFO: modules
+  "modules-right": ["battery", "custom/sysinfo", "clock", "group/status"],
+
+  // INFO: groups
+  "group/status": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-status-lol",
+      "transition-left-to-right": false
+    },
+    "modules": ["custom/notifications", "custom/power", "custom/lock"]
+  },
+
+  // INFO: built-in plugins
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "format-full": "{capacity}% ",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "tooltip-format": "Battery: {capacity}% {time}"
+  },
+  "clock": {
+    "format-alt": "  {:%a, %d %b %Y %R}",
+    "format": "  {:%H:%M}",
+    "tooltip": false,
+    "on-click-right": "~/.config/waybar/scripts/calendar.sh toggle_calendar"
+  },
+
+  // INFO: custom plugins
+  "custom/sysinfo": {
+    "interval": 1,
+    "exec": "~/.config/waybar/scripts/sysinfo.sh sys_info",
+    "on-click-right": "~/.config/waybar/scripts/sysinfo.sh eww_info",
+    "return-type": "json"
+  },
+  "custom/lock": {
+    "format": "{icon}",
+    "tooltip-format": "Lock Screen",
+    "format-icons": [""],
+    "on-click": "hyprlock --immediate-render"
+  },
+  "custom/power": {
+    "format": "󰤆",
+    "tooltip": true,
+    "tooltip-format": "Power options",
+    "on-click": "wlogout"
+  },
+  "custom/notifications": {
+    "tooltip": false,
+    "format": "<b>{}</b> {icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "",
+      "dnd-notification": " ",
+      "dnd-none": "󰂛",
+      "inhibited-notification": " ",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": " ",
+      "dnd-inhibited-none": " "
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+    "escape": true
+  }
+}

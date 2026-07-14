@@ -44,9 +44,9 @@ palette = "dark16"
 # template: A RELATIVE path that points to `~/.config/wallust/template` (depends on platform)
 # target: ABSOLUTE path in which to place a file with generated templated values.
 # ¡ If either one is a directory, then both SHOULD be one. !
+
 # zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
 waybar = { template = 'waybar', target = '~/.config/waybar/colors.css' }
-waybarClock = { template = 'waybarClock', target = '~/.config/waybar/clock.jsonc' }
 wofi= { template = 'wofi', target = '~/.config/wofi/style.css' }
 swaync = { template = 'swaync', target = '~/.config/swaync/colors.css' }
 wlogout = { template = 'wlogout', target = '~/.config/wlogout/colors.css' }
@@ -56,3 +56,4 @@ tmux = { template = 'tmux', target = '~/dotfiles/.config/tmux/colors.conf' }
 kitty = { template = 'kitty', target = '~/.config/kitty/kittytheme.conf' }
 rofi = { template = 'rofi', target = '~/.config/rofi/colors.rasi' }
 zathura = { template = 'zathura', target = '~/.config/zathura/colors' }
+eww = { template = 'eww', target = '~/.config/eww/styles/colors.scss' }

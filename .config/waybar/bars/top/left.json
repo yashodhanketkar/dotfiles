@@ -1,0 +1,103 @@
+{
+  // INFO: modules
+  "modules-left": [
+    "custom/louarch",
+    "group/soundcontrols",
+    "group/lightcontrols",
+    "group/connections"
+  ],
+
+  // INFO: groups
+  "group/connections": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": true
+    },
+    "modules": ["network", "bluetooth"]
+  },
+  "group/soundcontrols": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": true
+    },
+    "modules": ["wireplumber#sink", "wireplumber#source"]
+  },
+  "group/lightcontrols": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": true
+    },
+    "modules": ["backlight", "custom/kbdbacklight"]
+  },
+
+  // INFO: built-in plugins
+  "wireplumber#sink": {
+    "format": "{icon} {volume}",
+    "format-bluetooth": "󰂰",
+    "nospacing": 1,
+    "tooltip-format": "Speaker: {volume}%",
+    "format-muted": "󰝟 {volume}",
+    "format-icons": {
+      "headphone": "",
+      "default": ["󰖀", "󰕾", ""]
+    },
+    "on-click": "~/.config/waybar/scripts/soundclick.sh",
+    "on-click-right": "pavucontrol",
+    "on-click-middle": "~/.local/bin/switch-audio-device",
+    "scroll-step": 1
+  },
+  "wireplumber#source": {
+    "node-type": "Audio/Source",
+    "format": "",
+    "format-muted": "",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "tooltip-format": "Mic: {volume}%",
+    "scroll-step": 5
+  },
+  "backlight": {
+    "format": "{icon} {percent}",
+    "tooltip-format": "Backlight: {percent}%",
+    "format-icons": ["", ""],
+    "on-click": "louarch osmode night"
+  },
+  "network": {
+    "format-wifi": "{icon}",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰖪",
+    "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}\n{ipaddr}",
+    "tooltip-format-ethernet": "󰀂  {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 5,
+    "nospacing": 1,
+    "on-click": "nm-connection-editor"
+  },
+  "bluetooth": {
+    "format": "{icon} {status}",
+    "format-connected": "{icon} {device_battery_percentage}%",
+    "tooltip-format-connected": "{icon} {device_alias} ({device_battery_percentage}%)",
+    "on-click": "~/.config/waybar/scripts/bluetooth.sh toggle_power",
+    "on-click-right": "~/.config/waybar/scripts/bluetooth.sh toggle_discoverable",
+    "format-icons": {
+      "default": "󰂰"
+    }
+  },
+
+  // INFO: custom plugins
+  "custom/louarch": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "louarch-gui"
+  },
+  "custom/kbdbacklight": {
+    "exec": "~/.config/waybar/scripts/kbdbacklight.sh get",
+    "on-click": "~/.config/waybar/scripts/kbdbacklight.sh set",
+    "format": "{icon} {text}",
+    "return-type": "json",
+    "format-icons": [""],
+    "signal": 8
+  }
+}

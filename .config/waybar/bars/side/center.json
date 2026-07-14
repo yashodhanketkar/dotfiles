@@ -1,0 +1,25 @@
+{
+  // INFO: modules
+  "modules-center": ["mpris"],
+
+  // INFO: built-in plugins
+  "mpris": {
+    "ignored-players": ["firefox", "kdeconnect"],
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} {dynamic}",
+    "dyanmic-len": 60,
+    "title-len": 30,
+    "artist-len": 30,
+    "rotate": 90,
+    "expand": true,
+    "player-icons": {
+      "default": "",
+      "spotify": ""
+    },
+    "status-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "dynamic-order": ["title", "artist"]
+  }
+}
