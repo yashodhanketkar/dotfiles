@@ -1,9 +1,20 @@
+-- ===========================================================================
+-- COMPOSITOR BORDER COLORS & GRADIENTS
+-- ===========================================================================
+
 local M = {}
 
+---@class BorderGradient
+---@field angle number
+---@field colors string[]
+
+---@type BorderGradient
 M.gradActive = {
 	angle = 45,
 	colors = { "rgba({{ cursor | rgb }},75)", "rgba({{ foreground | rgb }},75)" },
 }
+
+---@type BorderGradient
 M.gradInactive = {
 	angle = 45,
 	colors = { "rgba({{ color1 | rgb }},75)", "rgba({{ color4 | rgb }},75)" },

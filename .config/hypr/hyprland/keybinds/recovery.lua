@@ -1,3 +1,7 @@
+-- ===========================================================================
+-- HYPRLAND SCREENLOCK CRASH RECOVERY
+-- ===========================================================================
+
 --- Wraps dispatch command to be used in keybinds
 ---
 ---@param cmd string

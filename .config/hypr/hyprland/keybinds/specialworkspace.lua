@@ -1,4 +1,8 @@
-local utils = require("hyprland.utils")
+-- ===========================================================================
+-- SPECIAL WORKSPACES
+-- ===========================================================================
+
+require("hyprland.utils")
 
 ---@param run_check_cmd string
 ---@param startup_cmd string

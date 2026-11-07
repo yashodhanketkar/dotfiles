@@ -1,5 +1,9 @@
+-- ===========================================================================
+-- ANIMATION CURVES
+-- ===========================================================================
+
 -- Animations
-hl.curve("smoothSpring", { type = "spring", mass = 1, stiffness = 200, dampening = 29 })
+hl.curve("smoothSpring", { type = "spring", mass = 1, stiffness = 450, dampening = 30 })
 
 -- stylua: ignore start
 hl.animation({ leaf = "border", enabled = true, speed = 4.0, spring = "smoothSpring" })

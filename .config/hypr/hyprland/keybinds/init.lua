@@ -1,3 +1,7 @@
+-- ===========================================================================
+-- KEYBINDING INITIALIZER/ORCHESTRATOR
+-- ===========================================================================
+
 require("hyprland.keybinds.apps")
 require("hyprland.keybinds.windows")
 require("hyprland.keybinds.recovery")
@@ -6,3 +10,5 @@ require("hyprland.keybinds.gestures")
 require("hyprland.keybinds.submaps")
 require("hyprland.keybinds.louarch")
 require("hyprland.keybinds.specialworkspace")
+require("hyprland.keybinds.eww")
+require("hyprland.keybinds.misc")

@@ -1,7 +1,13 @@
-require("hyprland.personal.looks")
-require("hyprland.personal.animations")
+-- ===========================================================================
+-- PERSONALIZED LOOK RELATED CONFIGURATIONS
+-- ===========================================================================
 
-local colors = require("hyprland.personal.colors")
+require("hyprland.personal.static.animations")
+require("hyprland.personal.static.rules")
+
+local colors = require("hyprland.personal.dynamic.colors")
+local decoration = require("hyprland.personal.static.decorations").decoration
+local input = require("hyprland.personal.static.devices").input
 
 hl.config({
 	general = {
@@ -43,6 +49,6 @@ hl.config({
 		no_hardware_cursors = 0,
 	},
 
-	decoration = require("hyprland.personal.decorations").decoration,
-	input = require("hyprland.personal.devices").input,
+	decoration = decoration,
+	input = input,
 })
