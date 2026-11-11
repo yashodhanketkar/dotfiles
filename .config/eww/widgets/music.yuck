@@ -1,0 +1,39 @@
+;===========================================================================
+; MEDIA PLAYER COMPONENT
+; Handles real-time music info streaming via playerctl
+;===========================================================================
+
+; --- Data Streams & State ---
+; Listens to custom background script for live JSON update about playerctl status
+; Provides a fallback state if no media client is currently running.
+(deflisten music_info :initial '{"title": "No Media", "artist": "No Media", "status": "Paused"}' "~/.local/bin/ewws music")
+
+; --- Root Component ---
+; The primary layout container assembling the track info and controls.
+(defwidget media_player []
+  (box
+    :class "player-container" :orientation "h" :space-evenly false :spacing 15
+
+    (media_information)
+    (media_buttons)
+  )
+)
+
+; --- Track Info Component ---
+; Information container assembling track title and artist name.
+(defwidget media_information []
+  (box :class "info-container" :orientation "v" :space-evenly false :valign "center" 
+    (label :class "content-title" :text "${music_info.title}" :limit-width 65 :halign "start")
+    (label :class "content-artist" :text "${music_info.artist}" :limit-width 65 :halign "start")
+  )
+)
+
+; --- Control Component ---
+; Media controls container.
+(defwidget media_buttons[]
+  (box :class "controls-container" :orientation "h" :space-evenly false :spacing 10 :valign "center" :halign "start"
+    (button :class "btn prev" :onclick "playerctl previous" "")
+    (button :class "btn play-pause" :onclick "playerctl play-pause" (label :text {music_info.status == "Playing" ?  "": "" }))
+    (button :class "btn next" :onclick "playerctl next" "")
+  )
+)

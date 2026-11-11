@@ -79,7 +79,7 @@ tooltip label {
 
 #custom-notifications.dnd-notification,
 #custom-notifications.dnd-none,
-#wireplumber.muted,
+#pulseaudio.muted,
 #custom-kbdbacklight.off,
 #bluetooth.off {
   background: @accent_14;

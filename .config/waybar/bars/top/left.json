@@ -2,7 +2,7 @@
   // INFO: modules
   "modules-left": [
     "custom/louarch",
-    "group/soundcontrols",
+    "pulseaudio",
     "group/lightcontrols",
     "group/connections"
   ],
@@ -16,14 +16,14 @@
     },
     "modules": ["network", "bluetooth"]
   },
-  "group/soundcontrols": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": true
-    },
-    "modules": ["wireplumber#sink", "wireplumber#source"]
-  },
+  // "group/soundcontrols": {
+  //   "orientation": "inherit",
+  //   "drawer": {
+  //     "transition-duration": 500,
+  //     "transition-left-to-right": true
+  //   },
+  //   "modules": ["pulseaudio#sink", "pulseaudio#source"]
+  // },
   "group/lightcontrols": {
     "orientation": "inherit",
     "drawer": {
@@ -33,10 +33,10 @@
     "modules": ["backlight", "custom/kbdbacklight"]
   },
 
-  // INFO: built-in plugins
-  "wireplumber#sink": {
+  // INFO: custom plugins
+  "pulseaudio": {
     "format": "{icon} {volume}",
-    "format-bluetooth": "󰂰",
+    "format-bluetooth": "󰂰 {volume}",
     "nospacing": 1,
     "tooltip-format": "Speaker: {volume}%",
     "format-muted": "󰝟 {volume}",
@@ -47,14 +47,6 @@
     "on-click": "~/.config/waybar/scripts/soundclick.sh",
     "on-click-right": "pavucontrol",
     "on-click-middle": "~/.local/bin/switch-audio-device",
-    "scroll-step": 1
-  },
-  "wireplumber#source": {
-    "node-type": "Audio/Source",
-    "format": "",
-    "format-muted": "",
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-    "tooltip-format": "Mic: {volume}%",
     "scroll-step": 5
   },
   "backlight": {
@@ -86,11 +78,11 @@
     }
   },
 
-  // INFO: custom plugins
   "custom/louarch": {
     "format": "",
     "tooltip": false,
-    "on-click": "louarch-gui"
+    "on-click": "louarch-gui",
+    "on-click-right": "hyprshot -o ~/Pictures/snaps -m active -m output"
   },
   "custom/kbdbacklight": {
     "exec": "~/.config/waybar/scripts/kbdbacklight.sh get",

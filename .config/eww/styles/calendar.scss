@@ -1,0 +1,63 @@
+@use 'colors';
+
+.calendar-container {
+  background: rgba(colors.$color1, 0.5);
+  color: colors.$color7;
+
+  border: 1px solid rgba(colors.$color7, 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+  .calendar-header {
+    margin-bottom: 0.5rem;
+
+    .calendar-header-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: colors.$foreground;
+    }
+
+    .today-button {
+      font-size: 0.5rem;
+      color: rgba(colors.$color7, 0.5);
+      border: none;
+      padding: 0;
+      margin: 0 1rem;
+    }
+  }
+
+  calendar, .calendar-widget {
+    color: rgba(colors.$foreground, 0.8);
+    border: 0.1rem solid transparent;
+    border-radius: 0.5rem;
+
+    .header {
+      color: colors.$cursor;
+      font-weight: bold;
+    }
+
+    .button {
+      color: rgba(colors.$cursor, 0.5);
+
+      &:hover {
+        background-color: rgba(colors.$color0, 0.2);
+      }
+    }
+
+    .highlight {
+      color: colors.$color7;
+      background: rgba(colors.$color1, 0.5);
+      border-radius: 0.25rem;
+    }
+
+    &:indeterminate {
+      color: rgba(colors.$foreground, 0.2);
+    }
+
+    &:selected {
+      color: colors.$foreground;
+      background: rgba(colors.$cursor, 0.5);
+      border-radius: 0.25rem;
+    }
+  }
+}

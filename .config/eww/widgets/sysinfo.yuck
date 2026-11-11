@@ -1,0 +1,68 @@
+;===========================================================================
+; SYSTEM INFO COMPONENT
+; Shows detailed real-time system information
+;===========================================================================
+
+; --- Root Component ---
+; The primary layout container assembling CPU, RAM, AND DISK information.
+(defwidget system_info []
+  (eventbox :onhoverlost "eww close sysinfo_popup"
+    (box :class "sysinfo-container" :orientation "v" :space-evenly false :spacing 0
+      (cpu_info) (ram_info) (disk_info)
+    )
+  )
+)
+
+; --- CPU Component ---
+; Shows real-time details of CPU and it's individual cores (Utilization and frequency).
+(defwidget cpu_info []
+  (box :class "cpu-container" :orientation "v" :space-evenly false :spacing 5
+    (label :class "cpu-freq" :text "AVG FREQ: ${round(EWW_CPU.avg, 1)} MHz" :halign "start")
+    (box :class "cpu-metric-container" :orientation "v" :spacing 3
+      (progress :class "cpu-bar" :value "${EWW_CPU.avg}")
+    )
+
+    (box :class "cpu-cores-container" :orientation "v" :space-evenly false
+      (for core_data in "${EWW_CPU.cores}"
+        (box :class "core-row" :orientation "h" :space-evenly true
+          (label :class "core-usage"  :text "${core_data.core}: ${round(core_data.usage, 0)}%" :halign "start")
+          (label :class "core-frequency" :text "${core_data.freq} MHz" :halign "end")
+        )
+      )
+    )
+  )
+)
+
+; --- RAM Component ---
+; Shows real-time RAM utilization in percentage and size.
+(defwidget ram_info []
+  (box :class "ram-container" :orientation "v" :spacing 5
+    (box :class "ram-label" :orientation "h" :space-evenly false :spacing 2
+      (label :class "ram-title" :halign "start" :text "RAM:")
+      (label :class "ram-info" :halign "start" :text "${round(EWW_RAM.used_mem_perc, 2)}% (${round(EWW_RAM.used_mem / 1048576, 0)}MiB / ${round(EWW_RAM.total_mem / 1048576, 0)}MiB)")
+    )
+    (progress :class "ram-bar" :value "${EWW_RAM.used_mem_perc}" :valign "center")
+  )
+)
+
+
+; --- DISK Component Main ---
+; Shows real-time DISK utilization in percentage and size for both HOME AND BOOT directory.
+(defwidget disk_info []
+  (box :class "disk-container" :orientation "v" :space-evenly false :spacing 5
+    (disk_entry :name "HOME" :data "${EWW_DISK['/']}")
+    (disk_entry :name "BOOT" :data "${EWW_DISK['/boot']}")
+  )
+)
+
+; --- DISK Component Helper ---
+; Assembles disk title, info, and utilization for required disk/volume/partition.
+(defwidget disk_entry [name data]
+  (box :orientation "v" :spacing 4
+    (box :class "disk-label" :orientation "h" :space-evenly false :spacing 2
+      (label :class "disk-title" :halign "start" :text "${name}:")
+      (label :class "disk-info" :halign "start" :text "${round(data.used_perc, 2)}% (${round(data.used / 1073741824, 2)}G/${round(data.total / 1073741824, 2)}G)")
+    )
+    (progress :class "disk-bar" :valign "center" :value "${data.used_perc}")
+  )
+)

@@ -1,0 +1,15 @@
+;===========================================================================
+; CALENDAR COMPONENT
+; Shows interactable calander.
+;===========================================================================
+
+(defwidget calendar_layout []
+  (eventbox :onhoverlost "eww close calendar_popup calendar"
+  (box :class "calendar-container" :orientation "vertical" :space-evenly false
+    (box :class "calendar-header" :space-evenly false
+      (label :class "calendar-header-title" :text "Calendar")
+    )
+    (calendar :class "calendar-widget"))
+  )
+)
+

@@ -23,10 +23,10 @@
     "format-full": "{capacity}% ",
     "interval": 5,
     "states": {
-      "warning": 20,
-      "critical": 10
+      "warning": 40,
+      "critical": 20
     },
-    "tooltip-format": "Battery: {capacity}% {time}"
+    "tooltip-format": "Battery: {capacity}%\n{time}"
   },
   "clock": {
     "format-alt": "  {:%a, %d %b %Y %R}",
