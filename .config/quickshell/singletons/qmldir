@@ -1,0 +1,6 @@
+module singletons
+
+singleton Theme 1.0 Theme.qml
+singleton SystemStats 1.0 SystemStats.qml
+singleton DateTime 1.0 DateTime.qml
+singleton BatteryStatus 1.0 BatteryStatus.qml

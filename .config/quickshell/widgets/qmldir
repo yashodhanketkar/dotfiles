@@ -1,0 +1,8 @@
+module widgets
+
+Workspace 1.0 ./Hyprland/Workspace.qml
+
+Clock 1.0 ./System/Clock.qml
+Date 1.0 ./System/Date.qml
+Stats 1.0 ./System/Stats.qml
+Battery 1.0 ./System/Battery.qml

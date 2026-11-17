@@ -1,0 +1,4 @@
+module utils
+
+Tooltip 1.0 Tooltip.qml
+ProgressBar 1.0 ProgressBar.qml
