@@ -16,23 +16,34 @@ Singleton {
     readonly property real volume: root.sink?.audio?.volume ?? 0.0
     readonly property bool muted: root.sink?.audio?.muted ?? false
 
+    readonly property string description: root.sink?.properties["node.description"] ?? "Unknown Output"
+
     readonly property string deviceType: {
-        if (!root.sink)
-            return "none";
+        const props = root.sink?.properties;
+        if (!props)
+            return "internal";
 
-        const props = root.sink.properties ?? {};
-        const api = (props["device.api"] ?? "").toLowerCase();
+        const iconName = (props["device.icon_name"] ?? props["device.icon-name"] ?? "").toLowerCase();
         const formFactor = (props["device.form-factor"] ?? "").toLowerCase();
-        const iconName = (props["device.icon-name"] ?? "").toLowerCase();
-        const name = (root.sink.name ?? "").toLowerCase();
+        const api = (props["device.api"] ?? "").toLowerCase();
+        const profileDesc = (props["device.profile.description"] ?? "").toLowerCase();
 
-        if (api === "bluez5" || name.includes("bluez") || iconName.includes("bluetooth")) {
+        if (api === "bluez5" || iconName.includes("bluetooth"))
             return "bluetooth";
+
+        if (formFactor === "headphone" || iconName.includes("headphone") || profileDesc.includes("headphone"))
+            return "headphone";
+        if (formFactor === "headset" || iconName.includes("headset"))
+            return "headset";
+
+        if (iconName.includes("video-display") || profileDesc.includes("hdmi") || profileDesc.includes("displayport"))
+            return "monitor";
+
+        if (formFactor === "speaker" || iconName.includes("speaker") || profileDesc.includes("speaker")) {
+            return (props["device.bus"] === "pci") ? "internal" : "speaker";
         }
-        if (formFactor === "headphone" || formFactor === "headset" || iconName.includes("headphone") || iconName.includes("headset")) {
-            return "headphones";
-        }
-        return "speaker";
+
+        return "internal";
     }
 
     function setVolume(newVolume) {

@@ -9,9 +9,9 @@ Rectangle {
     readonly property bool expanded: hoverHandler.hovered || slider.pressed
 
     color: Theme.col2
-    implicitWidth: expanded ? 160 : 62
-    implicitHeight: 30
-    radius: 8
+    implicitWidth: expanded ? 160 : (iconText.implicitWidth + levelText.implicitWidth + 28)
+    implicitHeight: Theme.height
+    radius: Theme.radius
     clip: true
 
     Behavior on implicitWidth {
@@ -32,6 +32,8 @@ Rectangle {
         spacing: 8
 
         Text {
+            id: iconText
+
             text: BrightnessService.nightMode ? "" : ""
             color: Theme.col8
             font.family: Theme.fontFamily
@@ -53,11 +55,13 @@ Rectangle {
         }
 
         Text {
+            id: levelText
+
             visible: !root.expanded
             text: BrightnessService.brightness
             color: Theme.col8
-            font.family: "JetBrains Mono"
-            font.pixelSize: 12
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontSize
         }
 
         ProgressBar {

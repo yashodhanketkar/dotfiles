@@ -9,7 +9,7 @@ Rectangle {
     readonly property bool expanded: hoverHandler.hovered || slider.pressed
 
     color: VolumeService.muted ? Theme.col14 : Theme.col2
-    implicitWidth: expanded ? 160 : 62
+    implicitWidth: expanded ? 160 : (iconText.implicitWidth + levelText.implicitWidth + 28)
     implicitHeight: 30
     radius: 8
     clip: true
@@ -32,13 +32,17 @@ Rectangle {
         spacing: 8
 
         Text {
-            readonly property int levelIndex: Math.min(2, Math.floor(VolumeService.volume * 3))
+            id: iconText
 
             text: {
                 if (VolumeService.muted || VolumeService.volume === 0)
                     return "󰝟";
-                if (VolumeService.deviceType === "headphones")
+                if (VolumeService.deviceType === "headphone" || VolumeService.deviceType === "headset")
                     return "";
+                if (VolumeService.deviceType === "bluetooth")
+                    return "";
+                if (VolumeService.deviceType === "monitor")
+                    return "";
                 return "";
             }
             color: VolumeService.muted ? Theme.col1 : Theme.col8
@@ -61,11 +65,12 @@ Rectangle {
         }
 
         Text {
+            id: levelText
             visible: !root.expanded
             text: Math.round(VolumeService.volume * 100)
             color: Theme.col8
             font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontSmall
+            font.pixelSize: Theme.fontSize
         }
 
         ProgressBar {
