@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
-import "../../../singletons/"
-import "../../../components/"
+import "../../singletons/"
+import "../"
 
 Rectangle {
     id: avgSec

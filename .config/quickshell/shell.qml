@@ -1,6 +1,5 @@
 import QtQuick
 import Quickshell
-import "./singletons/"
 import "./widgets/"
 
 ShellRoot {
@@ -9,8 +8,4 @@ ShellRoot {
     Bar {}
     NotificationsPopup {}
     NotificationPanel {}
-
-    Component.onCompleted: {
-        console.log("Notification daemon active, count:", NotificationService.count);
-    }
 }

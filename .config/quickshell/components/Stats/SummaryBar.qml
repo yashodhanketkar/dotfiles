@@ -1,4 +1,4 @@
-import "../../../singletons/"
+import "../../singletons/"
 import QtQuick
 
 Text {

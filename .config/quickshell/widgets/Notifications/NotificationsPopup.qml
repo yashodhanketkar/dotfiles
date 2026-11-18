@@ -1,10 +1,10 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 import "../../singletons/"
+import "../../components/"
 
 PanelWindow {
     id: popupWindow
@@ -59,112 +59,27 @@ PanelWindow {
         Repeater {
             model: NotificationService.popups
 
-            delegate: Rectangle {
-                id: toastCard
+            delegate: NotificationItem {
+                id: toastDelegation
                 required property var notif
 
                 width: popupList.width
-                implicitHeight: cardLayout.implicitHeight + 20
-                radius: Theme.radius + 2
-                color: notif.urgency === 2 ? Theme.colWarn : notif.urgency === 0 ? Qt.alpha(Theme.colFg, 0.5) : Theme.colBg
-                border.color: Theme.colBg
+                notification: notif
+                compact: true
+                cardColor: Qt.alpha(Theme.colBg, 0.9)
 
-                Rectangle {
-                    anchors.fill: parent
-                    anchors.leftMargin: toastCard.notif.urgency !== 1 ? 4 : 0
-                    anchors.margins: parent.border.width
-                    radius: parent.radius - 1
-                    color: Theme.colBg
-                }
+                onClicked: NotificationService.removePopup(notif)
+                onRightClicked: notif.dismiss()
 
                 HoverHandler {
                     id: cardHover
                 }
 
                 Timer {
-                    id: expireTimer
                     interval: NotificationService.popupTimeout
-                    running: !cardHover.hovered && !NotificationService.previewMode
+                    running: !cardHover.hovered
                     repeat: false
-                    onTriggered: NotificationService.removePopup(toastCard.notif)
-                }
-
-                MouseArea {
-                    anchors.fill: parent
-                    acceptedButtons: Qt.LeftButton | Qt.RightButton
-                    onClicked: mouse => {
-                        if (mouse.button === Qt.RightButton) {
-                            toastCard.notif.dismiss();
-                        } else {
-                            NotificationService.removePopup(toastCard.notif);
-                        }
-                    }
-                }
-
-                ColumnLayout {
-                    id: cardLayout
-                    anchors.fill: parent
-                    anchors.margins: 10
-                    anchors.leftMargin: toastCard.notif.urgency !== 1 ? 14 : 10
-                    spacing: 4
-
-                    RowLayout {
-                        Layout.fillWidth: true
-
-                        Text {
-                            text: toastCard.notif.appName || "Notification"
-                            color: Theme.colFg
-
-                            opacity: 0.7
-                            Layout.fillWidth: true
-
-                            font {
-                                family: Theme.fontFamily
-                                pixelSize: Theme.fontSmall
-                                italic: true
-                                bold: true
-                            }
-                        }
-
-                        Text {
-                            text: ""
-                            color: Theme.colFg
-                            font.family: Theme.fontFamily
-                            font.pixelSize: Theme.fontSmall
-
-                            MouseArea {
-                                anchors.fill: parent
-                                cursorShape: Qt.PointingHandCursor
-                                onClicked: toastCard.notif.dismiss()
-                            }
-                        }
-                    }
-
-                    Text {
-                        text: toastCard.notif.summary
-                        color: Theme.colFg
-                        wrapMode: Text.WordWrap
-                        Layout.fillWidth: true
-                        font {
-                            family: Theme.fontFamily
-                            pixelSize: Theme.fontSize
-                            bold: true
-                        }
-                    }
-
-                    Text {
-                        visible: toastCard.notif.body !== ""
-                        text: toastCard.notif.body
-                        color: Theme.col8
-                        opacity: 0.85
-                        wrapMode: Text.WordWrap
-                        maximumLineCount: 4
-                        elide: Text.ElideRight
-                        Layout.fillWidth: true
-
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.fontSize - 1
-                    }
+                    onTriggered: NotificationService.removePopup(toastDelegation.notif)
                 }
             }
         }

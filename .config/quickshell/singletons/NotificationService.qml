@@ -2,15 +2,16 @@ pragma Singleton
 
 import QtQuick
 import Quickshell
+import Quickshell.Io
 import Quickshell.Services.Notifications
 
 Singleton {
     id: root
 
     property bool dnd: false
-    property bool panelOpen: true
+    property bool panelOpen: false
     property bool panelHoveredOnce: false
-    property int popupTimeout: 5000
+    property int popupTimeout: 2500
 
     readonly property alias notifications: server.trackedNotifications
     readonly property int count: server.trackedNotifications.values.length ?? 0
@@ -92,8 +93,24 @@ Singleton {
 
     Timer {
         id: panelCloseTimer
-        interval: 500
+        interval: 300
         repeat: false
         onTriggered: root.panelOpen = false
+    }
+
+    IpcHandler {
+        target: "notifications"
+
+        function togglePanel(): void {
+            root.togglePanel();
+        }
+
+        function clearAll(): void {
+            root.clearAll();
+        }
+
+        function toggleDnd(): void {
+            root.toggleDnd();
+        }
     }
 }

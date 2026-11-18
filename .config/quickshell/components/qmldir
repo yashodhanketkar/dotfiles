@@ -1,4 +1,6 @@
 module components
 
-Tooltip 1.0 Tooltip.qml
+NotificationItem 1.0 NotificationItem.qml
 ProgressBar 1.0 ProgressBar.qml
+Tooltip 1.0 Tooltip.qml
+WorkspaceItem 1.0 WorkspaceItem.qml

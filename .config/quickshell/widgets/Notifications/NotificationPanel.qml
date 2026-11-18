@@ -4,26 +4,30 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
-import "../../singletons"
+import "../../singletons/"
+import "../../components/"
 
 PanelWindow {
     id: panelWindow
 
-    visible: NotificationService.panelOpen
+    readonly property int panelWidth: 360
+    readonly property int rightGap: 12
+
+    visible: NotificationService.panelOpen || panelContainer.x < panelWindow.implicitWidth
+    WlrLayershell.keyboardFocus: NotificationService.panelOpen ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
 
     anchors {
         top: true
         right: true
         bottom: true
     }
-
     margins {
         top: 42
-        right: 12
+        right: 0
         bottom: 12
     }
 
-    implicitWidth: 360
+    implicitWidth: panelWidth + rightGap
     color: "transparent"
     exclusionMode: ExclusionMode.Ignore
     WlrLayershell.layer: WlrLayer.Overlay
@@ -31,13 +35,36 @@ PanelWindow {
     Rectangle {
         id: panelContainer
 
-        anchors.fill: parent
+        width: panelWindow.panelWidth
+        height: parent.height
         radius: 12
         color: Qt.alpha(Theme.colBg, 0.75)
         border.color: Qt.alpha(Theme.colBg, 0.75)
         border.width: 1
 
-        property bool hasBeenHovered: true
+        focus: NotificationService.panelOpen
+
+        Keys.onPressed: event => {
+            if (event.key === Qt.Key_Escape) {
+                NotificationService.panelOpen = false;
+                event.accepted = true;
+            } else if ((event.modifiers & Qt.ShiftModifier) && event.key === Qt.Key_C) {
+                NotificationService.clearAll();
+                event.accepted = true;
+            } else if ((event.modifiers & Qt.ShiftModifier) && event.key === Qt.Key_D) {
+                NotificationService.toggleDnd();
+                event.accepted = true;
+            }
+        }
+
+        x: NotificationService.panelOpen ? 0 : panelWindow.implicitWidth
+
+        Behavior on x {
+            NumberAnimation {
+                duration: 240
+                easing.type: Easing.OutCubic
+            }
+        }
 
         HoverHandler {
             onHoveredChanged: NotificationService.setPanelHovered(hovered)
@@ -48,64 +75,8 @@ PanelWindow {
             anchors.margins: 12
             spacing: 10
 
-            RowLayout {
+            NotificationHeader {
                 Layout.fillWidth: true
-                spacing: 10
-
-                Text {
-                    text: "Notifications (" + NotificationService.count + ")"
-                    color: Theme.colFg
-                    Layout.fillWidth: true
-
-                    font.family: Theme.fontFamily
-                    font.pixelSize: Theme.fontSize + 2
-                    font.bold: true
-                }
-
-                Rectangle {
-                    implicitWidth: dndLable.implicitWidth + 16
-                    implicitHeight: 28
-                    radius: 6
-                    color: NotificationService.dnd ? Theme.colWarn : Theme.colCursor
-
-                    Text {
-                        id: dndLable
-                        anchors.centerIn: parent
-                        text: (NotificationService.dnd ? "" : "") + " DND"
-                        color: NotificationService.dnd ? Theme.colFg : Theme.colBg
-                        font.family: "JetBrains Mono"
-                        font.pixelSize: 13
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: NotificationService.toggleDnd()
-                    }
-                }
-
-                Rectangle {
-                    visible: NotificationService.count > 0
-                    implicitWidth: clearLabel.implicitWidth + 16
-                    implicitHeight: 28
-                    radius: 6
-                    color: Theme.colCursor
-
-                    Text {
-                        id: clearLabel
-                        anchors.centerIn: parent
-                        text: "Clear"
-                        color: Theme.colBg
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.fontSize - 1
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        cursorShape: Qt.PointingHandCursor
-                        onClicked: NotificationService.clearAll()
-                    }
-                }
             }
 
             Item {
@@ -132,90 +103,15 @@ PanelWindow {
                 spacing: 8
                 model: NotificationService.notifications
 
-                delegate: Rectangle {
-                    id: historyCard
+                delegate: NotificationItem {
                     required property var modelData
 
                     width: historyList.width
-                    implicitHeight: cardCol.implicitHeight + 18
-                    radius: 10
-                    color: historyCard.modelData.urgency === 2 ? "red" : Theme.colBg
-                    border.color: Qt.alpha(Theme.colFg, 0.1)
-                    border.width: 1
+                    notification: modelData
+                    compact: false
+                    cardColor: Theme.colBg
 
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.leftMargin: 4
-                        anchors.margins: parent.border.width
-                        radius: parent.radius - 2
-                        color: Theme.colBg
-                    }
-
-                    ColumnLayout {
-                        id: cardCol
-                        anchors.fill: parent
-                        anchors.margins: 9
-                        anchors.leftMargin: historyCard.modelData.urgency === 2 ? 13 : 9
-                        spacing: 4
-
-                        RowLayout {
-                            Layout.fillWidth: true
-
-                            Text {
-                                text: historyCard.modelData.appName || "Notification"
-                                color: Theme.colFg
-                                opacity: 0.7
-                                Layout.fillWidth: true
-
-                                font {
-                                    family: Theme.fontFamily
-                                    pixelSize: Theme.fontSmall
-                                    italic: true
-                                    bold: true
-                                }
-                            }
-
-                            Text {
-                                text: ""
-                                color: Qt.alpha(Theme.colFg, 0.5)
-                                opacity: 0.7
-
-                                font.family: Theme.fontFamily
-                                font.pixelSize: Theme.fontSmall
-
-                                MouseArea {
-                                    anchors.fill: parent
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: historyCard.modelData.dismiss()
-                                }
-                            }
-                        }
-
-                        Text {
-                            text: historyCard.modelData.summary
-                            color: Theme.colFg
-                            wrapMode: Text.WordWrap
-                            Layout.fillWidth: true
-
-                            font {
-                                family: Theme.fontFamily
-                                pixelSize: Theme.fontSize
-                                bold: true
-                            }
-                        }
-
-                        Text {
-                            visible: historyCard.modelData.body !== ""
-                            text: historyCard.modelData.body
-                            color: Theme.colFg
-                            opacity: 0.85
-                            wrapMode: Text.WordWrap
-                            Layout.fillWidth: true
-
-                            font.family: Theme.fontFamily
-                            font.pixelSize: Theme.fontSize - 1
-                        }
-                    }
+                    onClicked: expanded = !expanded
                 }
             }
         }

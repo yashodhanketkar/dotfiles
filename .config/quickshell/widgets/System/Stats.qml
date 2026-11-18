@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import "../../singletons/"
-import "./Stats/"
+import "../../components/Stats/"
 
 Rectangle {
     id: root

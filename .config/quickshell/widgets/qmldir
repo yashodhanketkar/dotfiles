@@ -1,15 +1,15 @@
 module widgets
 
-Volume 1.0 ./Controls/Volume.qml
 Brightness 1.0 ./Controls/Brightness.qml
+Volume 1.0 ./Controls/Volume.qml
 
 Workspace 1.0 ./Hyprland/Workspace.qml
 
-Clock 1.0 ./System/Clock.qml
-Date 1.0 ./System/Date.qml
-Stats 1.0 ./System/Stats.qml
-Battery 1.0 ./System/Battery.qml
-
-NotificationsPopup 1.0 ./Notifications/NotificationsPopup.qml
 Notification 1.0 ./Notifications/Notification.qml
+NotificationHeader 1.0 ./Notifications/NotificationHeader.qml
 NotificationPanel 1.0 ./Notifications/NotificationPanel.qml
+NotificationsPopup 1.0 ./Notifications/NotificationsPopup.qml
+
+Battery 1.0 ./System/Battery.qml
+Clock 1.0 ./System/Clock.qml
+Stats 1.0 ./System/Stats.qml
