@@ -1,31 +1,38 @@
-import QtQuick
-import Quickshell
 pragma Singleton
+
+import Quickshell
+import QtQuick
 
 Singleton {
     id: root
 
-    readonly property color colBg: "#000105"
-    readonly property color colFg: "#EAD8DB"
-    readonly property color colCursor: "#A38A94"
-    readonly property color col1: "#000105"
-    readonly property color col2: "#212C36"
-    readonly property color col3: "#452E39"
-    readonly property color col4: "#6B2738"
-    readonly property color col5: "#703E4A"
-    readonly property color col6: "#AE354B"
-    readonly property color col7: "#926B72"
-    readonly property color col8: "#D8BFC3"
-    readonly property color col9: "#978588"
-    readonly property color col10: "#2C3B48"
-    readonly property color col11: "#5B3D4C"
-    readonly property color col12: "#8F344A"
-    readonly property color col13: "#955363"
-    readonly property color col14: "#E84764"
-    readonly property color col15: "#C28F98"
-    readonly property color col16: "#D8BFC3"
-    readonly property color colFine: "#008002"
-    readonly property color colWarn: "#800002"
-    readonly property int fontSize: 14
-    readonly property string fontFamily: "Sans Serif"
+    readonly property color colBg:      "#131218"
+    readonly property color colFg:      "#F2E3DD"
+    readonly property color colCursor:  "#D8A29B"
+
+    readonly property color col1:  "#27272D"
+    readonly property color col2:  "#504F69"
+    readonly property color col3:  "#8F4843"
+    readonly property color col4:  "#725C6B"
+    readonly property color col5:  "#3A7782"
+    readonly property color col6:  "#7E8696"
+    readonly property color col7:  "#A48476"
+    readonly property color col8:  "#E4CFC6"
+    readonly property color col9:  "#A0918B"
+    readonly property color col10: "#6B698C"
+    readonly property color col11: "#BF6059"
+    readonly property color col12: "#987A8F"
+    readonly property color col13: "#4D9EAD"
+    readonly property color col14: "#A8B2C8"
+    readonly property color col15: "#DAB09E"
+    readonly property color col16: "#E4CFC6"
+
+    readonly property color colFine: "#0A880C"
+    readonly property color colWarn: "#89090C"
+
+    readonly property string fontFamily: "JetBrains Mono"
+    readonly property int fontSize:      14
+    readonly property int fontSmall:     12
+    readonly property int radius:        8
+    readonly property int height:        30
 }

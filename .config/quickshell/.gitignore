@@ -1,1 +1,3 @@
 ./singletons/Theme.qml
+.qmlformat.ini
+.qmlls.ini

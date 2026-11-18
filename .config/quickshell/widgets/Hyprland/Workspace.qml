@@ -1,8 +1,13 @@
+pragma ComponentBehavior: Bound
+
+import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
 Rectangle {
     id: root
+
+    required property ShellScreen screen
 
     Layout.alignment: Qt.AlignVCenter
     implicitWidth: wsRow.implicitWidth
@@ -21,10 +26,8 @@ Rectangle {
             model: 10
 
             WorkspaceItem {
+                screen: root.screen
             }
-
         }
-
     }
-
 }

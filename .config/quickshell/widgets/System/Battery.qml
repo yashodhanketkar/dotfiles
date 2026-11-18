@@ -1,5 +1,5 @@
 import "../../singletons/"
-import "../../utils/"
+import "../../components/"
 import QtQuick
 import QtQuick.Layouts
 
@@ -8,9 +8,9 @@ Rectangle {
 
     Layout.alignment: Qt.AlignVCenter
     implicitWidth: batText.implicitWidth + 16
-    implicitHeight: 30
-    radius: 8
-    color: BatteryStatus.state === "charging" ? "green" : parseInt(BatteryStatus.charge) < 20 ? "#ee1111" : Theme.col2
+    implicitHeight: Theme.height
+    radius: Theme.radius
+    color: BatteryStatus.getStatusColor()
 
     Text {
         id: batText
@@ -18,15 +18,14 @@ Rectangle {
         anchors.fill: parent
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        text: BatteryStatus.charge
+        text: BatteryStatus.charge + "%"
         color: Theme.colFg
 
         font {
-            pixelSize: Theme.fontSize
             bold: true
+            pixelSize: Theme.fontSize
             family: Theme.fontFamily
         }
-
     }
 
     MouseArea {
@@ -39,7 +38,6 @@ Rectangle {
     Tooltip {
         target: mouseArea.parent
         show: mouseArea.containsMouse
-        text: BatteryStatus.state
+        text: BatteryStatus.status
     }
-
 }

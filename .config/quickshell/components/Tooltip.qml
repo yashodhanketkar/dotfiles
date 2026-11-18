@@ -45,9 +45,6 @@ PopupWindow {
                 bold: true
                 family: Theme.fontFamily
             }
-
         }
-
     }
-
 }

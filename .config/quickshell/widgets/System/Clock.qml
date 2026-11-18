@@ -1,5 +1,5 @@
 import "../../singletons"
-import "../../utils/"
+import "../../components/"
 import QtQuick
 import QtQuick.Layouts
 
@@ -40,7 +40,5 @@ Rectangle {
             show: mouseArea.containsMouse
             text: DateTime.datetime
         }
-
     }
-
 }

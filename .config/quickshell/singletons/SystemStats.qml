@@ -1,7 +1,7 @@
+pragma Singleton
 import QtQuick
 import Quickshell
 import Quickshell.Io
-pragma Singleton
 
 Singleton {
     id: root
@@ -24,10 +24,8 @@ Singleton {
     property string bootTotal: "0.00G"
     property real lastCpuTotal: 0
     property real lastCpuIdle: 0
-    property var lastCoreTotals: ({
-    })
-    property var lastCoreIdles: ({
-    })
+    property var lastCoreTotals: ({})
+    property var lastCoreIdles: ({})
     property var latestCoreFreqs: []
 
     FileView {
@@ -98,7 +96,6 @@ Singleton {
             root.latestCoreFreqs = freqs;
             if (freqs.length > 0)
                 root.avgFreqMhz = Number((sum / freqs.length).toFixed(1));
-
         }
     }
 
@@ -161,7 +158,6 @@ Singleton {
                 }
             }
         }
-
     }
 
     Timer {
@@ -176,5 +172,4 @@ Singleton {
             dfProc.running = true;
         }
     }
-
 }

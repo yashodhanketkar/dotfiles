@@ -1,5 +1,8 @@
 module widgets
 
+Volume 1.0 ./Controls/Volume.qml
+Brightness 1.0 ./Controls/Brightness.qml
+
 Workspace 1.0 ./Hyprland/Workspace.qml
 
 Clock 1.0 ./System/Clock.qml

@@ -1,0 +1,7 @@
+module Stats
+
+CpuAvgSection 1.0 CpuAvgSection.qml
+CpuFreqSection 1.0 CpuFreqSection.qml
+DiskSection 1.0 DiskSection.qml
+MemorySection 1.0 MemorySection.qml
+SummaryBar 1.0 SummaryBar.qml
