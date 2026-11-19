@@ -31,6 +31,7 @@ Variants {
             }
             Ctrl.Volume {}
             Ctrl.Brightness {}
+            Sys.Network {}
 
             Item {
                 Layout.fillWidth: true

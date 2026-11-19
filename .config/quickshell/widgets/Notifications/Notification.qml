@@ -39,7 +39,7 @@ Rectangle {
 
         Text {
             Layout.alignment: Qt.AlignVCenter
-            text: NotificationService.dnd ? "" : ""
+            text: NotificationService.dnd ? Icons.iBellDND : Icons.iBell
             color: NotificationService.dnd ? Theme.col1 : Theme.col8
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSize

@@ -1,10 +1,14 @@
 import "../../singletons"
+import "../../components/Calendar/"
 import "../../components/"
 import QtQuick
 import QtQuick.Layouts
+import Quickshell
 
 Rectangle {
     id: root
+
+    property bool calendarOpen: false
 
     Layout.alignment: Qt.AlignVCenter
     implicitWidth: timeText.implicitWidth + 16
@@ -18,7 +22,7 @@ Rectangle {
         anchors.fill: parent
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        text: DateTime.time
+        text: Icons.iTime + " " + DateTime.time
         color: Theme.colFg
 
         font {
@@ -26,19 +30,41 @@ Rectangle {
             bold: true
             family: Theme.fontFamily
         }
+    }
 
-        MouseArea {
-            id: mouseArea
+    HoverHandler {
+        id: clockHover
+        cursorShape: Qt.PointingHandCursor
+    }
 
-            anchors.fill: parent
-            hoverEnabled: true
-            cursorShape: Qt.PointingHandCursor
+    TapHandler {
+        onTapped: root.calendarOpen = !root.calendarOpen
+        acceptedButtons: Qt.RightButton
+    }
+
+    Tooltip {
+        target: root
+        show: clockHover.hovered && !root.calendarOpen
+        text: DateTime.datetime
+    }
+
+    PopupWindow {
+        id: calendarPopup
+
+        anchor {
+            item: root
+            edges: Edges.Bottom
+            gravity: Edges.Bottom
+            margins.top: 0
         }
 
-        Tooltip {
-            target: mouseArea.parent
-            show: mouseArea.containsMouse
-            text: DateTime.datetime
+        visible: root.calendarOpen
+        implicitWidth: calendar.implicitWidth
+        implicitHeight: calendar.implicitHeight
+        color: "transparent"
+
+        Calendar {
+            id: calendar
         }
     }
 }

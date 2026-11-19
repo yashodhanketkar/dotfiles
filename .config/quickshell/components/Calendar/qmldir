@@ -1,0 +1,6 @@
+module components
+
+Calendar 1.0 Calendar.qml
+CalendarHeader 1.0 CalendarHeader.qml
+CalendarMonthGrid 1.0 CalendarMonthGrid.qml
+CalendarWeekDay 1.0 CalendarWeekDay.qml

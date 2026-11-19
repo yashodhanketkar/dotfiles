@@ -1,10 +1,12 @@
 import "../../singletons/"
 import QtQuick
+import QtQuick.Layouts
 
 Text {
     id: root
 
     anchors.centerIn: parent
+
     text: [SystemStats.cpuUsage, SystemStats.ramUsage, SystemStats.homeUsage].map(v => {
         return String(v).padStart(2, "0") + "%";
     }).join(" | ")

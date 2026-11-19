@@ -18,7 +18,7 @@ Rectangle {
         anchors.fill: parent
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        text: BatteryStatus.charge + "%"
+        text: BatteryStatus.charge + "% " + BatteryStatus.icon
         color: Theme.colFg
 
         font {

@@ -36,18 +36,18 @@ Rectangle {
 
             text: {
                 if (VolumeService.muted || VolumeService.volume === 0)
-                    return "󰝟";
+                    return Icons.iMute;
                 if (VolumeService.deviceType === "headphone" || VolumeService.deviceType === "headset")
-                    return "";
+                    return Icons.iHeadphones;
                 if (VolumeService.deviceType === "bluetooth")
-                    return "";
+                    return Icons.iBTSound;
                 if (VolumeService.deviceType === "monitor")
-                    return "";
+                    return Icons.iMonitorSpeaker;
                 return "";
             }
             color: VolumeService.muted ? Theme.col1 : Theme.col8
-            font.family: "JetBrains Mono"
-            font.pixelSize: 14
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontSize
 
             MouseArea {
                 id: iconMouseArea

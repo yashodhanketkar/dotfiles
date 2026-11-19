@@ -34,7 +34,7 @@ Rectangle {
         Text {
             id: iconText
 
-            text: BrightnessService.nightMode ? "" : ""
+            text: BrightnessService.nightMode ? Icons.iMoon : Icons.iSun
             color: Theme.col8
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSmall

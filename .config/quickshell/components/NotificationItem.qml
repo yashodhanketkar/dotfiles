@@ -67,7 +67,7 @@ Rectangle {
             }
 
             Text {
-                text: ""
+                text: Icons.iClose
                 color: Qt.alpha(Theme.colFg, 0.5)
                 opacity: 0.7
                 font.family: Theme.fontFamily

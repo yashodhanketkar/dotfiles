@@ -12,4 +12,5 @@ NotificationsPopup 1.0 ./Notifications/NotificationsPopup.qml
 
 Battery 1.0 ./System/Battery.qml
 Clock 1.0 ./System/Clock.qml
+Network 1.0 ./System/Network.qml
 Stats 1.0 ./System/Stats.qml

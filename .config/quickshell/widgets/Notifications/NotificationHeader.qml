@@ -25,7 +25,7 @@ RowLayout {
         Text {
             id: dndLabel
             anchors.centerIn: parent
-            text: (NotificationService.dnd ? "" : "") + " DND"
+            text: (NotificationService.dnd ? Icons.iBellDND : Icons.iBell) + " DND"
             color: NotificationService.dnd ? Theme.colFg : Theme.colBg
             font.family: "JetBrains Mono"
             font.pixelSize: 13
