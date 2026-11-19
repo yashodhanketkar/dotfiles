@@ -1,0 +1,6 @@
+module Network
+
+NetworkColBt 1.0 NetworkColBt.qml
+NetworkColWifi 1.0 NetworkColWifi.qml
+NetworkCore 1.0 NetworkCore.qml
+NetworkPopup 1.0 NetworkPopup.qml

@@ -1,4 +1,4 @@
-module components
+module Calendar
 
 Calendar 1.0 Calendar.qml
 CalendarHeader 1.0 CalendarHeader.qml

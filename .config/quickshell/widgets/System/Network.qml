@@ -1,7 +1,7 @@
 import "../../singletons"
+import "../../components/Network/"
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 
 Rectangle {
     id: root
@@ -10,39 +10,21 @@ Rectangle {
     implicitWidth: netRow.implicitWidth + (Theme.radius * 2)
     implicitHeight: Theme.height
     radius: Theme.radius
-    color: Theme.colBg
+    color: Theme.col2
 
-    RowLayout {
+    NetworkCore {
         id: netRow
-
         anchors.centerIn: parent
-        height: parent.height
-        spacing: 2
+    }
 
-        Text {
-            id: wifiText
-            text: NetworkService.wifiIcon
-            color: Theme.colFg
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontSize
-            font.bold: true
-        }
+    MouseArea {
+        id: mouseArea
+        hoverEnabled: true
+        anchors.fill: parent
+    }
 
-        Text {
-            text: "|"
-            color: Theme.colFg
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontSize
-            font.bold: true
-        }
-
-        Text {
-            id: btText
-            text: NetworkService.btIcon
-            color: Theme.colFg
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontSize
-            font.bold: true
-        }
+    NetworkPopup {
+        target: root
+        show: mouseArea.containsMouse
     }
 }

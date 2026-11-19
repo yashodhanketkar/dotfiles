@@ -72,48 +72,45 @@ Singleton {
                 root.wifiSignal = signal;
                 root.wifiSpeed = speed;
                 root.wifiIp = ip;
-
-                console.log(wifiConnected);
             }
         }
     }
 
     Process {
         id: btProc
-        command: ["sh", "-c", "echo \"POWER:$(bluetoothctl show | awk '/Powered:/ {print $2}')\"; " + "bluetoothctl devices Connected | head -n1"]
+        command: ["sh", "-c", "POWER=$(bluetoothctl show | awk '/Powered:/ {print $2}'); " + "echo \"POWER:$POWER\"; " + "if [ \"$POWER\" = \"yes\" ]; then " + "MAC=$(bluetoothctl devices Connected | awk 'NR==1 {print $2}'); " + "if [ -n \"$MAC\" ]; then " + "bluetoothctl info \"$MAC\" | awk -F': ' '/Name:/ {name=$2} /Battery Percentage:/ {match($2, /\\(([0-9]+)\\)/, b); bat=b[1]} END {print \"CONNECTED:yes\\nNAME:\" name \"\\nMAC:'\"$MAC\"'\\nBATTERY:\" (bat != \"\" ? bat : \"-1\")}'; " + "else echo \"CONNECTED:no\"; fi; " + "else echo \"CONNECTED:no\"; fi"]
 
         stdout: StdioCollector {
             onStreamFinished: {
                 const lines = this.text.trim().split("\n");
                 let powered = false;
                 let connected = false;
-                let name = "Disconnected";
+                let name = "";
                 let mac = "";
+                let battery = -1;
 
                 for (const line of lines) {
                     if (line.startsWith("POWER:")) {
-                        powered = (line.split(":")[1]?.trim() === "yes");
-                    } else if (line.startsWith("Device ")) {
-                        // Format: Device XX:XX:XX:XX:XX:XX Device Name
-                        connected = true;
-                        const firstSpace = line.indexOf(" ");
-                        const secondSpace = line.indexOf(" ", firstSpace + 1);
-                        mac = line.substring(firstSpace + 1, secondSpace);
-                        name = line.substring(secondSpace + 1) || "Connected Device";
+                        powered = (line.slice(6).trim() === "yes");
+                    } else if (line.startsWith("CONNECTED:")) {
+                        connected = (line.slice(10).trim() === "yes");
+                    } else if (line.startsWith("NAME:")) {
+                        name = line.slice(5).trim();
+                    } else if (line.startsWith("MAC:")) {
+                        mac = line.slice(4).trim();
+                    } else if (line.startsWith("BATTERY:")) {
+                        const parsed = parseInt(line.slice(8).trim(), 10);
+                        battery = isNaN(parsed) ? -1 : parsed;
                     }
                 }
 
                 root.btEnabled = powered;
                 root.btConnected = connected;
-                root.btDeviceName = connected ? name : (powered ? "Not Connected" : "Disabled");
-                root.btDeviceMac = mac;
+                root.btDeviceName = connected ? (name || "Connected Device") : (powered ? "Not Connected" : "Disabled");
+                root.btDeviceMac = connected ? mac : "";
+                root.btBattery = connected ? battery : -1;
 
-                if (connected && mac !== "") {
-                    btBatteryProc.mac = mac;
-                    btBatteryProc.running = true;
-                } else {
-                    root.btBattery = -1;
-                }
+                console.log(root.btDeviceName, root.btDeviceMac, root.btBattery);
             }
         }
     }
