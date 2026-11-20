@@ -57,3 +57,4 @@ kitty = { template = 'kitty', target = '~/.config/kitty/kittytheme.conf' }
 rofi = { template = 'rofi', target = '~/.config/rofi/colors.rasi' }
 zathura = { template = 'zathura', target = '~/.config/zathura/colors' }
 eww = { template = 'eww', target = '~/.config/eww/styles/colors.scss' }
+quickshell = { template = 'quickshell', target = '~/.config/quickshell/singletons/Theme.qml' }

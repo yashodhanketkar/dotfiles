@@ -1,4 +1,5 @@
 import "../../singletons/"
+import "../"
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
@@ -39,16 +40,13 @@ PopupWindow {
                 id: mainLayout
                 anchors.fill: parent
                 anchors.margins: 12
-                spacing: 10
 
                 NetworkColWifi {}
 
-                Rectangle {
+                Divider {
                     visible: NetworkService.btConnected
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 1
-                    color: Theme.colFg
                     opacity: 0.12
+                    compact: false
                 }
 
                 NetworkColBt {}

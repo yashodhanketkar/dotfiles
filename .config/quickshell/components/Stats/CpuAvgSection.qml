@@ -11,9 +11,6 @@ Rectangle {
     radius: 8
     color: "transparent"
 
-    border.color: Qt.alpha(Theme.col7, 0.3)
-    border.width: 1
-
     ColumnLayout {
         id: freqCol
 
@@ -35,9 +32,6 @@ Rectangle {
         ProgressBar {
             Layout.fillWidth: true
             value: (SystemStats.avgFreqMhz / SystemStats.maxFreqMhz) * 100
-
-            fillColor: Theme.col7
-            color: Theme.colBg
         }
     }
 }

@@ -1,4 +1,5 @@
 import "../../singletons/"
+import "../"
 import QtQuick
 import QtQuick.Layouts
 
@@ -16,14 +17,12 @@ RowLayout {
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSize
         font.bold: true
+        opacity: NetworkService.wifiConnected ? 1.0 : 0.5
     }
 
-    Text {
-        text: "|"
-        color: Theme.colFg
-        font.family: Theme.fontFamily
-        font.pixelSize: Theme.fontSize
-        font.bold: true
+    Spacer {
+        isVisible: true
+        compact: false
     }
 
     Text {
@@ -33,5 +32,6 @@ RowLayout {
         font.family: Theme.fontFamily
         font.pixelSize: Theme.fontSize
         font.bold: true
+        opacity: NetworkService.btConnected ? 1.0 : 0.5
     }
 }

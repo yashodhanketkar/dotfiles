@@ -1,20 +1,48 @@
 import "../../singletons/"
+import "../"
 import QtQuick
 import QtQuick.Layouts
 
-Text {
+Rectangle {
     id: root
 
-    anchors.centerIn: parent
+    implicitWidth: statsRow.implicitWidth
+    implicitHeight: Theme.height
+    color: "transparent"
 
-    text: [SystemStats.cpuUsage, SystemStats.ramUsage, SystemStats.homeUsage].map(v => {
-        return String(v).padStart(2, "0") + "%";
-    }).join(" | ")
-    color: Theme.col8
+    component StatText: Text {
+        color: Theme.colFg
 
-    font {
-        family: Theme.fontFamily
-        pixelSize: Theme.fontSize
-        bold: true
+        font {
+            bold: true
+            pixelSize: Theme.fontSize
+            family: Theme.fontFamily
+        }
+    }
+
+    RowLayout {
+        id: statsRow
+        anchors.centerIn: parent
+        spacing: 0
+
+        Repeater {
+            model: [SystemStats.cpuUsage, SystemStats.ramUsage, SystemStats.homeUsage,]
+
+            RowLayout {
+                required property int index
+                required property real modelData
+
+                spacing: 0
+
+                StatText {
+                    text: String(parent.modelData).padStart(2, "0") + "%"
+                }
+
+                Spacer {
+                    isVisible: parent.index < 2
+                    compact: false
+                }
+            }
+        }
     }
 }

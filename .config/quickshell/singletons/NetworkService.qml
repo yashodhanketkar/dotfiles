@@ -109,8 +109,6 @@ Singleton {
                 root.btDeviceName = connected ? (name || "Connected Device") : (powered ? "Not Connected" : "Disabled");
                 root.btDeviceMac = connected ? mac : "";
                 root.btBattery = connected ? battery : -1;
-
-                console.log(root.btDeviceName, root.btDeviceMac, root.btBattery);
             }
         }
     }

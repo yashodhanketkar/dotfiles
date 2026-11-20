@@ -26,12 +26,17 @@ Variants {
             anchors.rightMargin: 5
             spacing: 8
 
-            Hypr.Workspace {
-                screen: barWindow.screen
-            }
             Ctrl.Volume {}
             Ctrl.Brightness {}
             Sys.Network {}
+
+            Item {
+                Layout.fillWidth: true
+            }
+
+            Hypr.Workspace {
+                screen: barWindow.screen
+            }
 
             Item {
                 Layout.fillWidth: true

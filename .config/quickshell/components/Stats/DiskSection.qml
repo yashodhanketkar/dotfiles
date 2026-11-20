@@ -8,8 +8,6 @@ Rectangle {
     implicitHeight: diskCol.implicitHeight + 16
     radius: 8
     color: "transparent"
-    border.color: Theme.col7
-    border.width: 1
 
     ColumnLayout {
         id: diskCol
@@ -36,7 +34,6 @@ Rectangle {
             ProgressBar {
                 Layout.fillWidth: true
                 value: SystemStats.homePercent
-                fillColor: Theme.col7
             }
         }
 
@@ -58,7 +55,6 @@ Rectangle {
             ProgressBar {
                 Layout.fillWidth: true
                 value: SystemStats.bootPercent
-                fillColor: Theme.col7
             }
         }
     }

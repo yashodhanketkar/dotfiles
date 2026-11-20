@@ -4,6 +4,7 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import "../../components/"
+import "../../singletons/"
 
 Rectangle {
     id: root
@@ -12,8 +13,8 @@ Rectangle {
 
     Layout.alignment: Qt.AlignVCenter
     implicitWidth: wsRow.implicitWidth
-    implicitHeight: 30
-    radius: 8
+    implicitHeight: Theme.height
+    radius: Theme.radius
     color: "transparent"
 
     RowLayout {

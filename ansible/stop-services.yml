@@ -9,6 +9,7 @@
         state: stopped
       loop:
         - containerd.service
+        - jellyfin.service
         - docker.socket
         - postgresql.service
         - calibre-server.service

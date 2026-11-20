@@ -13,8 +13,8 @@ Singleton {
     property bool panelHoveredOnce: false
     property int popupTimeout: 2500
 
-    readonly property alias notifications: server.trackedNotifications
-    readonly property int count: server.trackedNotifications.values.length ?? 0
+    readonly property ObjectModel notifications: server.trackedNotifications
+    readonly property int count: notifications.values.length
     readonly property ListModel popups: ListModel {}
 
     NotificationServer {
@@ -60,8 +60,8 @@ Singleton {
     }
 
     function clearAll() {
-        for (let i = server.trackedNotifications.values.length - 1; i >= 0; i--) {
-            server.trackedNotifications.values[i].dismiss();
+        for (let i = notifications.values.length - 1; i >= 0; i--) {
+            notifications.values[i].dismiss();
         }
         popups.clear();
     }

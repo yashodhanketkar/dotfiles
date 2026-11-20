@@ -1,6 +1,8 @@
 module components
 
+Divider 1.0 Divider.qml
 NotificationItem 1.0 NotificationItem.qml
 ProgressBar 1.0 ProgressBar.qml
+Spacer 1.0 Spacer.qml
 Tooltip 1.0 Tooltip.qml
 WorkspaceItem 1.0 WorkspaceItem.qml

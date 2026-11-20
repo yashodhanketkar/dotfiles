@@ -8,8 +8,6 @@ Rectangle {
     implicitHeight: coresCol.implicitHeight + 16
     radius: 8
     color: "transparent"
-    border.color: Theme.col7
-    border.width: 1
 
     ColumnLayout {
         id: coresCol
@@ -17,6 +15,14 @@ Rectangle {
         anchors.fill: parent
         anchors.margins: 8
         spacing: 4
+
+        Text {
+            text: "CPU Cores Frequencies"
+            color: Theme.colFg
+
+            font.family: Theme.fontFamily
+            font.bold: true
+        }
 
         Repeater {
             model: SystemStats.perCoreStats

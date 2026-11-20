@@ -8,8 +8,6 @@ Rectangle {
     implicitHeight: ramCol.implicitHeight + 16
     radius: 8
     color: "transparent"
-    border.color: Theme.col7
-    border.width: 1
 
     ColumnLayout {
         id: ramCol
@@ -32,7 +30,6 @@ Rectangle {
         ProgressBar {
             Layout.fillWidth: true
             value: SystemStats.ramPercent
-            fillColor: Theme.col7
         }
     }
 }

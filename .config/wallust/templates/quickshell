@@ -1,0 +1,38 @@
+pragma Singleton
+
+import Quickshell
+import QtQuick
+
+Singleton {
+    id: root
+
+    readonly property color colBg:      "{{ background }}"
+    readonly property color colFg:      "{{ foreground }}"
+    readonly property color colCursor:  "{{ cursor }}"
+
+    readonly property color col1:  "{{ color0 }}"
+    readonly property color col2:  "{{ color1 }}"
+    readonly property color col3:  "{{ color2 }}"
+    readonly property color col4:  "{{ color3 }}"
+    readonly property color col5:  "{{ color4 }}"
+    readonly property color col6:  "{{ color5 }}"
+    readonly property color col7:  "{{ color6 }}"
+    readonly property color col8:  "{{ color7 }}"
+    readonly property color col9:  "{{ color8 }}"
+    readonly property color col10: "{{ color9 }}"
+    readonly property color col11: "{{ color10 }}"
+    readonly property color col12: "{{ color11 }}"
+    readonly property color col13: "{{ color12 }}"
+    readonly property color col14: "{{ color13 }}"
+    readonly property color col15: "{{ color14 }}"
+    readonly property color col16: "{{ color15 }}"
+
+    readonly property color colFine: "{{ background | blend("#00ff00") }}"
+    readonly property color colWarn: "{{ background | blend("#ff0000") }}"
+
+    readonly property string fontFamily: "JetBrains Mono"
+    readonly property int fontSize:      14
+    readonly property int fontSmall:     12
+    readonly property int radius:        8
+    readonly property int height:        30
+}

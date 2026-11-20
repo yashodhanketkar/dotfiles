@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import Quickshell
 import "../../singletons/"
 import "../../components/Stats/"
+import "../../components/"
 
 Rectangle {
     id: root
@@ -54,13 +55,27 @@ Rectangle {
 
                 anchors.fill: parent
                 anchors.margins: 10
-                spacing: 8
+                spacing: 0
 
                 CpuAvgSection {}
+
+                StatDivider {}
+
                 CpuFreqSection {}
+
+                StatDivider {}
+
                 MemorySection {}
+
+                StatDivider {}
+
                 DiskSection {}
             }
         }
+    }
+
+    component StatDivider: Divider {
+        opacity: 0.12
+        compact: false
     }
 }

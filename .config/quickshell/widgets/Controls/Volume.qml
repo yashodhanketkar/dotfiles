@@ -92,7 +92,7 @@ Rectangle {
     }
 
     Tooltip {
-        target: iconMouseArea.parent
+        target: root
         text: "Right click to " + (VolumeService.muted ? "unmute" : "mute")
         show: iconMouseArea.containsMouse
     }

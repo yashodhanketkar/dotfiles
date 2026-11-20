@@ -16,7 +16,7 @@ Rectangle {
     visible: HyprService.isOnMonitor(ws, screen)
     Layout.fillHeight: true
     implicitWidth: Math.max(28, wsText.implicitWidth + 16)
-    radius: 8
+    radius: Theme.radius
     color: isFocused ? Theme.colCursor : Theme.col2
 
     Text {
