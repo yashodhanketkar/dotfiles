@@ -1,4 +1,5 @@
+module Brightness
+
 BrightnessCore 1.0 BrightnessCore.qml
-BrightnessExternal 1.0 BrightnessExternal.qml
-BrightnessInternal 1.0 BrightnessInternal.qml
 BrightnessKbd 1.0 BrightnessKbd.qml
+BrightnessModule 1.0 BrightnessModule.qml

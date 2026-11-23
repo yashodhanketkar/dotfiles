@@ -3,10 +3,8 @@ import QtQuick
 import QtQuick.Layouts
 
 Rectangle {
-    property bool isVisible: true
     property bool compact: true
 
-    visible: visible
     Layout.preferredHeight: 1
     Layout.fillWidth: true
 

@@ -1,6 +1,7 @@
 pragma Singleton
 import QtQuick
 import Quickshell
+import Quickshell.Io
 
 Singleton {
     id: root
@@ -12,6 +13,7 @@ Singleton {
 
     property int displayYear: root.currentDate.getFullYear()
     property int displayMonth: root.currentDate.getMonth()
+    property bool caledarOpen: false
 
     function changeMonth(delta) {
         const next = new Date(root.displayYear, root.displayMonth + delta, 1);
@@ -28,9 +30,21 @@ Singleton {
         root.displayYear = dateTime.date.getFullYear();
     }
 
+    function openCalendar(): void {
+        root.caledarOpen = !root.caledarOpen;
+    }
+
     SystemClock {
         id: dateTime
 
         precision: SystemClock.Seconds
+    }
+
+    IpcHandler {
+        target: "dateTime"
+
+        function openCalendar(): void {
+            root.openCalendar();
+        }
     }
 }

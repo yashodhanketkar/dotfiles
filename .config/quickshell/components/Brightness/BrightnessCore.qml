@@ -39,23 +39,25 @@ RowLayout {
         }
     }
 
-    Spacer {
-        isVisible: BrightnessService.hasExternalMonitor
-    }
+    Spacer {}
 
-    BrightnessInternal {
+    BrightnessModule {
         id: inter
-        Layout.fillHeight: true
+        icon: Icons.iLaptop
+        value: BrightnessService.brightness
+        onValueModified: newValue => BrightnessService.setBrightness(newValue)
     }
 
     Spacer {
         isVisible: BrightnessService.hasExternalMonitor
     }
 
-    BrightnessExternal {
+    BrightnessModule {
         id: exter
+        icon: Icons.iMonitorSpeaker
+        value: BrightnessService.externalBrightness
+        onValueModified: newValue => BrightnessService.setExternalBrightness(newValue)
         visible: BrightnessService.hasExternalMonitor
-        Layout.fillHeight: true
     }
 
     Spacer {

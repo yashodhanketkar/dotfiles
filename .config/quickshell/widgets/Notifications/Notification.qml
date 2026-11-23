@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import "../../singletons"
+import "../../components/"
 
 Rectangle {
     id: root
@@ -18,8 +19,11 @@ Rectangle {
     }
 
     MouseArea {
+        id: mouseArea
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
+        hoverEnabled: true
+
         acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
         onClicked: mouse => {
             if (mouse.button === Qt.RightButton) {
@@ -54,5 +58,11 @@ Rectangle {
             font.pixelSize: Theme.fontSize
             font.bold: true
         }
+    }
+
+    Tooltip {
+        target: root
+        text: NotificationService.dnd ? "Silent Mode" : "Normal Mode"
+        show: mouseArea.containsMouse
     }
 }

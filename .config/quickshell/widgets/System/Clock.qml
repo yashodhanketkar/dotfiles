@@ -3,7 +3,6 @@ import "../../components/Calendar/"
 import "../../components/"
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 
 Rectangle {
     id: root
@@ -48,23 +47,9 @@ Rectangle {
         text: DateTime.datetime
     }
 
-    PopupWindow {
+    Calendar {
         id: calendarPopup
-
-        anchor {
-            item: root
-            edges: Edges.Bottom
-            gravity: Edges.Bottom
-            margins.top: 0
-        }
-
+        target: root
         visible: root.calendarOpen
-        implicitWidth: calendar.implicitWidth
-        implicitHeight: calendar.implicitHeight
-        color: "transparent"
-
-        Calendar {
-            id: calendar
-        }
     }
 }

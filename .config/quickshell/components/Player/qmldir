@@ -1,0 +1,6 @@
+module Player
+
+PlayerControls 1.0 PlayerControls.qml
+PlayerPopup 1.0 PlayerPopup.qml
+PlayerPopupUi 1.0 PlayerPopupUi.qml
+PlayerSummary 1.0 PlayerSummary.qml

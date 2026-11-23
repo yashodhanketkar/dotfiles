@@ -6,9 +6,17 @@ import "../"
 Item {
     id: root
 
+    property string icon: ""
+    property real value: 0
+    property real expandedWidth: 140
+    property color accentColor: Theme.col8
+    property color trackColor: Theme.colBg
+
+    signal valueModified(real newValue)
+
     readonly property bool expanded: hoverHandler.hovered || slider.pressed
     readonly property real collapsedWidth: levelText.implicitWidth
-    readonly property real desiredWidth: expanded ? 140 : collapsedWidth
+    readonly property real desiredWidth: expanded ? expandedWidth : collapsedWidth
 
     implicitWidth: desiredWidth
     implicitHeight: parent ? parent.height : Theme.height
@@ -32,8 +40,8 @@ Item {
             id: levelText
 
             visible: !root.expanded
-            text: Icons.iMonitorSpeaker + " " + BrightnessService.externalBrightness
-            color: Theme.col8
+            text: (root.icon !== "" ? root.icon + " " : "") + root.value
+            color: root.accentColor
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSize
         }
@@ -45,10 +53,11 @@ Item {
             Layout.fillWidth: true
             interactive: true
 
-            fillColor: Theme.col8
-            trackColor: Theme.colBg
-            value: BrightnessService.externalBrightness
-            onMoved: newValue => BrightnessService.setExternalBrightness(newValue)
+            fillColor: root.accentColor
+            trackColor: root.trackColor
+            value: root.value
+
+            onMoved: newValue => root.valueModified(newValue)
         }
     }
 }
