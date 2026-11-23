@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
+import Quickshell.Hyprland
 import "widgets/Hyprland" as Hypr
 import "widgets/Controls" as Ctrl
 import "widgets/System" as Sys
@@ -12,6 +13,8 @@ Variants {
     PanelWindow {
         id: barWindow
         required property var modelData
+
+        visible: true
 
         screen: modelData
         anchors.top: true
@@ -46,6 +49,14 @@ Variants {
             Sys.Stats {}
             Sys.Clock {}
             Noti.Notification {}
+        }
+
+        GlobalShortcut {
+            name: "togglePanel"
+            description: "Toggle Quickshell top bar"
+            onPressed: {
+                barWindow.visible = !barWindow.visible;
+            }
         }
     }
 }

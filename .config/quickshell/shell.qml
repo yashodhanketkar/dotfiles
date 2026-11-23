@@ -6,6 +6,7 @@ ShellRoot {
     id: root
 
     Bar {}
+    SideBar {}
     NotificationsPopup {}
     NotificationPanel {}
 }

@@ -47,6 +47,8 @@ Singleton {
             notification.closed.connect(() => {
                 root.removePopup(notification);
             });
+
+            console.log(notification);
         }
     }
 

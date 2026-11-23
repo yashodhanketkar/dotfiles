@@ -45,4 +45,10 @@ Singleton {
     // clock
     readonly property string iTime: "\uf017"
     readonly property string iDateTime: "\udb80\udced"
+
+    // music
+    readonly property string iMPlay: "\udb81\udc0a"
+    readonly property string iMPause: "\udb80\udfe4"
+    readonly property string iMPrev: "\udb81\udcae"
+    readonly property string iMNext: "\udb81\udcad"
 }

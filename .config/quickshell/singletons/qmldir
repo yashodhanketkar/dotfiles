@@ -7,6 +7,7 @@ singleton HyprService 1.0 HyprService.qml
 singleton Icons 1.0 Icons.qml
 singleton NetworkService 1.0 NetworkService.qml
 singleton NotificationService 1.0 NotificationService.qml
+singleton PlayerService 1.0 PlayerService.qml
 singleton SystemStats 1.0 SystemStats.qml
 singleton Theme 1.0 Theme.qml
 singleton VolumeService 1.0 VolumeService.qml
