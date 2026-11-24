@@ -6,6 +6,7 @@ singleton DateTime 1.0 DateTime.qml
 singleton HyprService 1.0 HyprService.qml
 singleton Icons 1.0 Icons.qml
 singleton NetworkService 1.0 NetworkService.qml
+singleton NotificationControls 1.0 NotificationControls.qml
 singleton NotificationService 1.0 NotificationService.qml
 singleton PlayerService 1.0 PlayerService.qml
 singleton SystemStats 1.0 SystemStats.qml

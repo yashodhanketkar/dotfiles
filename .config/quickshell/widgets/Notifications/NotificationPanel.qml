@@ -114,6 +114,14 @@ PanelWindow {
                     onClicked: expanded = !expanded
                 }
             }
+
+            Item {
+                Layout.fillHeight: true
+            }
+
+            NotificationFooter {
+                Layout.fillWidth: true
+            }
         }
     }
 }

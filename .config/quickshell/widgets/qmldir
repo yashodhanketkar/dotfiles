@@ -7,6 +7,7 @@ Volume 1.0 ./Controls/Volume.qml
 Workspace 1.0 ./Hyprland/Workspace.qml
 
 Notification 1.0 ./Notifications/Notification.qml
+NotificationFooter 1.0 ./Notifications/NotificationFooter.qml
 NotificationHeader 1.0 ./Notifications/NotificationHeader.qml
 NotificationPanel 1.0 ./Notifications/NotificationPanel.qml
 NotificationsPopup 1.0 ./Notifications/NotificationsPopup.qml
